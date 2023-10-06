@@ -33,7 +33,7 @@ option(WITH_TBLITE "Whether xTB support should be included via tblite." TRUE)
 option(WITH_API "Whether public API should be included and the DFTB+ library installed" TRUE)
 option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" TRUE)
 ```
-  4. compiling DFTB+ v23.1
+  4. Compiling DFTB+ v23.1
 ```
 mkdir _build
 FC=gfortran CC=gcc cmake -DLAPACK_LIBRARY="-L/usr/lib/x86_64-linux-gnu -lopenblas -lpthread" -DCMAKE_INSTALL_PREFIX=/mnt/d/dftbplus-23.1/dftb+ -B _build ./
@@ -42,7 +42,7 @@ cmake -B _build -DTEST_OMP_THREADS=4 ./
 pushd _build; ctest; popd
 cmake --install _build
 ```
-  5. environment settings
+  5. Environment settings
 ```
 echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
@@ -63,7 +63,7 @@ tar zxvf lammps-29Oct2020.tar.gz
 cp ./DFTBP/* ./lammps-29Oct20/
 cd lammps-29Oct20/src
 ```
-  6. compiling Lammps with DFTBP code
+  6. Compiling Lammps with DFTBP code
 ```
 make yes-dftbp yes-MOLECULE
 make package-status
