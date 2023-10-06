@@ -104,6 +104,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - "sunitconv" of "fix_dftb.h": "virial" uses "sunitconv" in "fix_dftb.h" to convert units. At first, I thought that "sunitconv" was used for something other than "virial", but it looks like that's not the case in the code, so I plan to revert to the original after some testing.
 - This package based on fix_latte.cpp and fix_latte.h
 - "DFTB+ v.21.2 and v.22.2" version: It is necessary to rewrite "Makefile" and "Makefile.mpi" to the version number of DFTB+ to be used. You will also need to rewrite the DFTB+ path settings in "~/.bashrc".
+- For non-WSL Linux, "/mnt/d" replaces "$HOME" etc.
 
 
 ## PC specs used for test ######################################
