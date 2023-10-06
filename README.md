@@ -88,6 +88,23 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   3. open equil.xyz on Ovito code
 
 
+## Note (fix_dftb.h) ######################################
+- ERROR messages:
+  + Must use units metal with fix dftbp command
+  + Fix dftbp currently runs only in serial
+  + Illegal ... command
+  + Self-explanatory. Check the input script syntax and compare to the documentation for the command.  You can use -echo screen as a command-line option when running LAMMPS to see the offending line.
+  + Fix latte does not yet support a LAMMPS calculation of a Coulomb potential
+  + Could not find fix latte compute ID
+  + Fix dftbp compute ID does not compute pe/atom
+  + Fix dftbp requires 3d problem
+  + Fix dftbp cannot compute Coulomb potential
+  + Fix dftbp requires 3d simulation
+  + Internal DFTB+ problem
+- WARNING messages:
+  + Fix dftbp should come after all other integration fixes
+
+
 ## Original Information ######################################
 # DFTBP
 LAMMPS codes for DFTB+
