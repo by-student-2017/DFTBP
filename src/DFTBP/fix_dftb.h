@@ -68,7 +68,7 @@ protected:
 
   double mermin_energy, mermin_energy_total,r_energy,e_energy;
   
-  double const sunitconv=1.0/0.367493245336341E-01;
+  double const sunitconv=1.0/0.367493245336341E-01 * (1.0E-9/29421.02648438959);
   double const funitconv=1.0/0.194469064593167E-01;
   double const eunitconv=1.0/0.367493245336341E-01;
   double const lunitconv=0.188972598857892E+01;
