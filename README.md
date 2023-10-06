@@ -61,7 +61,7 @@ cd /mnt/d
 wget https://download.lammps.org/tars/lammps-29Oct2020.tar.gz
 tar zxvf lammps-29Oct2020.tar.gz
 git clone https://github.com/by-student-2017/DFTBP.git
-cp ./DFTBP/* ./lammps-29Oct20/
+cp -r ./DFTBP/* ./lammps-29Oct20/
 ```
   6. Compiling Lammps with DFTBP code
 ```
