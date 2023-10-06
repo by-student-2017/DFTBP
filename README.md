@@ -105,6 +105,16 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - This package based on fix_latte.cpp and fix_latte.h
 
 
+## PC specs used for test ######################################
++ OS: Microsoft Windows 11 Home 64 bit
++ BIOS: 1.14.0
++ CPU： 12th Gen Intel(R) Core(TM) i7-12700
++ Base Board：0R6PCT (A01)
++ Memory：32 GB
++ GPU: NVIDIA GeForce RTX3070
++ WSL2: VERSION="22.04.1 LTS (Jammy Jellyfish)"
+
+
 ## References ######################################
 - [G. S. Jung, S. Irle and B. G. Sumpter, Carbon 190 (2022) 183-193.](https://doi.org/10.1016/j.carbon.2022.01.002)
 
