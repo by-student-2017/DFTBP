@@ -128,7 +128,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 
 
 ## Acknowledgment ######################################
-- This project is/was partially supported by the following projects:
+- This project is/was partially supported by the following :
   + meguREnergy Co., Ltd.
   + ATSUMITEC Co., Ltd.
   + RIKEN
