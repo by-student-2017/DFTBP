@@ -85,7 +85,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   3. open equil.xyz on Ovito code
 
 
-## Note (fix_dftb.h) ######################################
+## Note (for fix_dftb.h, etc) ######################################
 - ERROR messages:
   + Must use units metal with fix dftbp command
   + Fix dftbp currently runs only in serial
