@@ -123,6 +123,10 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - [G. S. Jung, S. Irle and B. G. Sumpter, Carbon 190 (2022) 183-193.](https://doi.org/10.1016/j.carbon.2022.01.002)
 
 
+## My ("By Student") wish ######################################
+- The only people who have published the code that links "DFTB+" and "Lampps" are the developer (ORNL) and myself (Riken), who has made it work with the latest version. We strongly look forward to the success of the Max Planck Institute and other motivated individuals.
+
+
 ## Original Information ######################################
 # DFTBP
 LAMMPS codes for DFTB+
