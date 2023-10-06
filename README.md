@@ -7,6 +7,7 @@
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
 - Note 1: "mpirun -np 1" and OpenMP version
 - Note 2: "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell and convert it to eV unit.
+- Note 3: "virial" uses "sunitconv" in "fix_dftb.h" to convert units. At first, I thought that "sunitconv" was used for something other than "virial", but it looks like that's not the case in the code, so I plan to revert to the original after some testing.
 
 
 ## Step 1. Preparing DFTB+ ######################################
