@@ -3,7 +3,12 @@ LAMMPS codes for DFTB+
 
 
 ## Information ######################################
-- Tests: "DFTB+ v.23.1" + "lammps-29Oct2020" on Ubuntu 22.04.1 LTS (WLS2, Windows11)
+- Tests: 
+```
+DFTB+ v.23.1
+lammps-29Oct2020
+Ubuntu 22.04.1 LTS (WLS2, Windows11)
+```
 - Note: "mpirun -np 1" and OpenMP version
 
 
