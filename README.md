@@ -6,6 +6,7 @@
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
 - Note 1: "mpirun -np 1" and OpenMP version
+- Note 2: By using "xTB", calculations using many elements are possible. I am looking forward to hearing reports from many people in their papers. 
 
 
 ## Step 1. Preparing DFTB+ ######################################
@@ -105,6 +106,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - This package based on fix_latte.cpp and fix_latte.h
 - "DFTB+ v.21.2 and v.22.2" version: It is necessary to rewrite "Makefile" and "Makefile.mpi" to the version number of DFTB+ to be used. You will also need to rewrite the DFTB+ path settings in "~/.bashrc". Please use the "dftbplus.h" included in the DFTB+ include that you want to use. Note that "_Bool" may need to be changed to "bool" in "dftbplus.h".
 - For non-WSL Linux, "/mnt/d" replaces "$HOME" etc.
+- I have only been able to get it working, so please contact the respective developer for any problems or development issues.
 
 
 ## PC specs used for test ######################################
