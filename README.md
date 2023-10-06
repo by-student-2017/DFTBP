@@ -5,7 +5,7 @@ LAMMPS codes for DFTB+
 ## Information ######################################
 - Tests: 
   + DFTB+ v.23.1 
-    + (v.21.2 or v.22.2 for "graphene" in examples) [a link](https://dftbplus.org/download/deprecated)
+    + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
   + lammps-29Oct2020 [a link](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
 - Note: "mpirun -np 1" and OpenMP version
