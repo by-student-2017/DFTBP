@@ -1,0 +1,119 @@
+Geometry = LammpsFormat {
+  CommandFile = {
+units metal
+boundary p p p
+atom_style full
+pair_style dftbplus
+  }
+  DataFile = {
+LAMMPS DATA FILE by G. Jung@ORNL
+24 atoms
+2 atom types
+0.0 7.378536440243417 xlo xhi
+0.0 8.52 ylo yhi
+-16.75 16.75 zlo zhi
+Masses
+1 12.0
+2 14.00
+Atoms
+1 1 1 0 0.0 0.71 0.0
+2 1 1 0 1.2297560733739028 1.42 0.0
+3 1 1 0 1.2297560733739028 2.84 0.0
+4 1 1 0 0.0 3.55 0.0
+5 1 1 0 0.0 4.97 0.0
+6 1 1 0 1.2297560733739028 5.68 0.0
+7 1 1 0 1.2297560733739028 7.1 0.0
+8 1 1 0 0.0 7.81 0.0
+9 1 1 0 2.4595121467478056 0.71 0.0
+10 1 1 0 3.6892682201217086 1.42 0.0
+11 1 1 0 3.6892682201217086 2.84 0.0
+12 1 1 0 2.4595121467478056 3.55 0.0
+13 1 1 0 2.4595121467478056 4.97 0.0
+14 1 1 0 3.6892682201217086 5.68 0.0
+15 1 1 0 3.6892682201217086 7.1 0.0
+16 1 1 0 2.4595121467478056 7.81 0.0
+17 1 1 0 4.919024293495611 0.71 0.0
+18 1 1 0 6.148780366869514 1.42 0.0
+19 1 1 0 6.148780366869514 2.84 0.0
+20 1 1 0 4.919024293495611 3.55 0.0
+21 1 1 0 4.919024293495611 4.97 0.0
+22 1 1 0 6.148780366869514 5.68 0.0
+23 1 1 0 6.148780366869514 7.1 0.0
+24 1 2 0 4.919024293495611 7.81 0.0
+  }
+}
+Driver = {}
+Hamiltonian = xTB {
+  Method = "GFN2-xTB"
+  SCC = Yes
+  SCCTolerance = 1.000000000000000E-010
+  MaxSCCIterations = 1000
+  Mixer = Broyden {
+    MixingParameter = 0.200000000000000
+    InverseJacobiWeight = 1.000000000000000E-002
+    MinimalWeight = 1.00000000000000
+    MaximalWeight = 100000.000000000
+    WeightFactor = 1.000000000000000E-002
+  }
+  KPointsAndWeights = SuperCellFolding {
+4 0 0
+0 4 0
+0 0 1
+0.5 0.5 0.0
+  }
+  Differentiation = FiniteDiff {
+    Delta = 1.000000000000000E-002
+  }
+  ShellResolvedSCC = No
+  ReadInitialCharges = No
+  InitialCharges = {}
+  EwaldParameter = 0.00000000000000
+  EwaldTolerance = 1.000000000000000E-009
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  Charge = 0.00000000000000
+  Dispersion = {}
+  Solvation = {}
+  ForceEvaluation = "Traditional"
+  ConvergentSCCOnly = Yes
+  Electrostatics = GammaFunctional {}
+  Filling = Fermi {
+    Temperature = 9.5004460357391702E-004
+    IndependentKFilling = No
+  }
+}
+Options = {
+  WriteAutotestTag = No
+  WriteDetailedOut = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 0
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  WriteCharges = Yes
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+ParserOptions = {
+  ParserVersion = 13
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Analysis = {
+  CalculateForces = Yes
+  ProjectStates = {}
+  WriteEigenvectors = No
+  WriteBandOut = No
+  MullikenAnalysis = No
+  AtomResolvedEnergies = No
+}
+ExcitedState = {}
+Reks = None {}
