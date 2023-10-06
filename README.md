@@ -1,4 +1,5 @@
-# DFTBP (LAMMPS codes for DFTB+)
+# DFTBP 
+- LAMMPS codes for DFTB+
 - Tests: 
   + DFTB+ v.23.1 
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
