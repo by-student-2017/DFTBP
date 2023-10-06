@@ -5,7 +5,8 @@
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
-- Note: "mpirun -np 1" and OpenMP version
+- Note 1: "mpirun -np 1" and OpenMP version
+- Note 2: "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell and change it to eV.
 
 
 ## Step 1. Preparing DFTB+ ######################################
