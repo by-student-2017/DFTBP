@@ -39,4 +39,4 @@ unfix		emin
 
 unfix           integ
 fix             3 all npt temp 300 300 1.0 x 0 0 10 y 0 0 10
-run             1000
+run             500
