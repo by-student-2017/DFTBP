@@ -58,9 +58,9 @@ bash
   6. Install DFTBP and Lammps code
 ```
 cd /mnt/d
-git clone https://github.com/by-student-2017/DFTBP.git
 wget https://download.lammps.org/tars/lammps-29Oct2020.tar.gz
 tar zxvf lammps-29Oct2020.tar.gz
+git clone https://github.com/by-student-2017/DFTBP.git
 cp ./DFTBP/* ./lammps-29Oct20/
 ```
   6. Compiling Lammps with DFTBP code
