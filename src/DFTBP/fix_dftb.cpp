@@ -342,8 +342,8 @@ void FixDFTBP::post_force(int vflag){
 
   //energy update only eflag>1
   if(eflag){
-    //dftbp_get_energy(dftbplus, &mermin_energy);
-    dftbp_get_energyparts(dftbplus, &mermin_energy,&r_energy,&e_energy);    
+    dftbp_get_energy(dftbplus, &mermin_energy);
+    //dftbp_get_energyparts(dftbplus, &mermin_energy,&r_energy,&e_energy);    
     dftbp_energy=mermin_energy*eunitconv;
     dftbp_repulsiveE=r_energy*eunitconv;
     dftbp_electronicE=e_energy*eunitconv;
@@ -365,7 +365,8 @@ void FixDFTBP::post_force(int vflag){
   //std::cout<<"DFTB Debug: check point after force set: "<<std::endl;    
   //energy update only vflag>1  
   //if(vflag>0){
-    dftbp_get_virial(dftbplus,fstress);
+    //dftbp_get_virial(dftbplus,fstress);
+    dftbp_get_stress_tensor(dftbplus,fstress);
     virial[0]=fstress[0]*sunitconv;
     virial[1]=fstress[4]*sunitconv;
     virial[2]=fstress[8]*sunitconv;
