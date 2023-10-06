@@ -53,7 +53,7 @@ bash
 ```
 
 
-## Step 2. Preparing DFTBP and Lammps######################################
+## Step 2. Preparing DFTBP and Lammps ######################################
   6. Install DFTBP and Lammps
 ```
 cd /mnt/d
