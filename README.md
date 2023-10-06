@@ -61,10 +61,10 @@ git clone https://github.com/by-student-2017/DFTBP.git
 wget https://download.lammps.org/tars/lammps-29Oct2020.tar.gz
 tar zxvf lammps-29Oct2020.tar.gz
 cp ./DFTBP/* ./lammps-29Oct20/
-cd lammps-29Oct20/src
 ```
   6. Compiling Lammps with DFTBP code
 ```
+cd lammps-29Oct20/src
 make yes-dftbp yes-MOLECULE
 make package-status
 make mpi
