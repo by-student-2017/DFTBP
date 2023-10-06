@@ -3,12 +3,12 @@ LAMMPS codes for DFTB+
 
 
 ## Information ######################################
-- Tests: DFTB+ v.23.1 + lammps-29Oct2020 on Ubuntu 22.04.1 LTS (WLS2, windows11)
+- Tests: "DFTB+ v.23.1" + "lammps-29Oct2020" on Ubuntu 22.04.1 LTS (WLS2, Windows11)
 - Note: "mpirun -np 1" and OpenMP version
 
 
 ## Step 1. Preparing DFTB+ ######################################
-  1. Install libraries, etc, e.g.
+  1. Install libraries, e.g.
 ```
 sudo apt update
 sudo apt -y install gfortran g++ build-essential
