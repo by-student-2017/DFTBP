@@ -54,7 +54,7 @@ bash
 
 
 ## Step 2. Preparing DFTBP and Lammps ######################################
-  6. Install DFTBP and Lammps
+  6. Install DFTBP and Lammps code
 ```
 cd /mnt/d
 git clone https://github.com/by-student-2017/DFTBP.git
