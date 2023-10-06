@@ -105,7 +105,8 @@ void dftbp_api(int *major, int *minor, int *patch);
  *
  * \return Whether API is instance safe.
  */
-_Bool dftbp_is_instance_safe();
+//_Bool dftbp_is_instance_safe();
+bool dftbp_is_instance_safe();
 
 /**
  * Initializes a DFTB+ calculator.
