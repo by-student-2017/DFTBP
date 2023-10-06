@@ -103,7 +103,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - "virial" for "fix_dftb.cpp": "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell and convert it to eV unit.
 - "sunitconv" of "fix_dftb.h": "virial" uses "sunitconv" in "fix_dftb.h" to convert units. At first, I thought that "sunitconv" was used for something other than "virial", but it looks like that's not the case in the code, so I plan to revert to the original after some testing.
 - This package based on fix_latte.cpp and fix_latte.h
-- "DFTB+ v.21.2 and v.22.2" version: It is necessary to rewrite "Makefile" and "Makefile.mpi" to the version number of DFTB+ to be used.
+- "DFTB+ v.21.2 and v.22.2" version: It is necessary to rewrite "Makefile" and "Makefile.mpi" to the version number of DFTB+ to be used. You will also need to rewrite the DFTB+ path settings in "~/.bashrc".
 
 
 ## PC specs used for test ######################################
