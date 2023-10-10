@@ -95,7 +95,7 @@ cd /mnt/d/lammps-29Oct20/examples/DFTBP/Al_comp_stress-strain
   2. run
 ```
 ulimit -s unlimited
-export OMP_NUM_THREADS=4
+export OMP_NUM_THREADS=8
 mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 ```
   3. ./plot_stress_vs_strain_v2.gpl
