@@ -91,6 +91,7 @@ dump_modify     1 element Al
 # Run for at least 10 picosecond (assuming 1 fs timestep)
 run             2000
 unfix           3
+undump          1
 
 # Store final cell length for strain calculations
 variable        tmp equal "lx"
