@@ -86,7 +86,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   3. open equil.xyz on Ovito code
 
 
-## Example (Al, compression, stress-strain, GFN2-xTB, test version) ######################################
+## Example (Al, compression, stress-strain, sk file, test version) ######################################
   1. go to examples directory
 ```
 cd /mnt/d/lammps-29Oct20/examples/DFTBP/Al_comp_stress-strain

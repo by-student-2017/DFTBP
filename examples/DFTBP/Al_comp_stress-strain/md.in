@@ -15,7 +15,7 @@ atom_modify     sort 0 0.0    # turn off sorting of the coordinates
 #variable latparam equal 4.05
 
 #lattice         fcc ${latparam}
-#region          whole block 0 2 0 2 0 2
+#region          whole block 0 3 0 3 0 3
 #create_box      1 whole
 
 #region          upper block INF INF INF INF INF INF units box 
