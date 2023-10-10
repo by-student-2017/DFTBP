@@ -96,7 +96,9 @@ cd /mnt/d/lammps-29Oct20/examples/DFTBP/Al_comp_stress-strain
 export OMP_NUM_THREADS=8
 mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 ```
-  3. open equil.xyz on Ovito code
+  3. ./plot_stress_vs_strain_v2.gpl
+
+  4. open equil.xyz (in cfg directory) on Ovito code
 
 
 ## Note (for fix_dftb.h, etc) ######################################
