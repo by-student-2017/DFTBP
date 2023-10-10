@@ -25,10 +25,10 @@ Hamiltonian = xTB {
   #MaxAngularMomentum = {
   #  C = "p"
   #}
-  #Filling = Fermi {
-  #  Temperature [Kelvin] = 100
-  #  IndependentKFilling = No
-  #}
+  Filling = Fermi {
+    Temperature [Kelvin] = 300
+    IndependentKFilling = No
+  }
   #SlaterKosterFiles = Type2FileNames {
   #  Separator = "-"
   #  Suffix = ".skf"
