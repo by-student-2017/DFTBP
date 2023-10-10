@@ -15,7 +15,7 @@ atom_modify     sort 0 0.0    # turn off sorting of the coordinates
 #variable latparam equal 4.05
 
 #lattice         fcc ${latparam}
-#region          whole block 0 4 0 4 0 4
+#region          whole block 0 4 0 3 0 3
 #create_box      1 whole
 
 #region          upper block INF INF INF INF INF INF units box 
@@ -28,9 +28,8 @@ atom_modify     sort 0 0.0    # turn off sorting of the coordinates
 
 #write_data      structure.data
 # Please note that if you use the comment in the first line output by 
-# "write_data" as is, the calculation will not run. It is no good if 
-# the cell size is too large. It is best to make it about 4x4x4 as shown above. 
-# This size makes SQS suitable for experiments.
+# "write_data" as is, the calculation will not run. It is no good if the cell size is too large. 
+# It is best to make it about 4x3x3. This size makes SQS suitable for experiments.
 
 # ----------------------- Read Structure file ------------------------
 read_data       structure.data
@@ -61,19 +60,19 @@ thermo_modify   norm no flush yes
 
 ######################################
 # MINIMIZATION
-fix             integ all nve
-fix             therm all langevin 10.0 10.0  0.1 699483
+#fix             integ all nve
+#fix             therm all langevin 10.0 10.0 0.1 699483
 fix             2 all dftbp dftb_in.hsd NULL
 fix_modify      2 energy yes
 
-fix             emin all box/relax x 0.0 y 0.0
-min_style       cg
-min_modify      dmax 0.2
-min_modify      line quadratic
-minimize        0.0 1.0e-8 1000 10000
+#fix             emin all box/relax x 0.0 y 0.0
+#min_style       cg
+#min_modify      dmax 0.2
+#min_modify      line quadratic
+#minimize        0.0 1.0e-8 1000 10000
 
-unfix           emin
-unfix           integ
+#unfix           emin
+#unfix           integ
 
 ######################################
 # EQUILIBRATION
