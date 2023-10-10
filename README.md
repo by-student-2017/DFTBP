@@ -6,7 +6,7 @@
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
 - Note 1: "mpirun -np 1" and OpenMP version
-- Note 2: I tried "xTB" with bulk of Al and Cu, but could not calculate it well.
+- Note 2: I tried "xTB" with bulk of Al and Cu, but could not calculate it well. It may be necessary to create optimized parameters for the metal material.
 
 
 ## Step 1. Preparing DFTB+ ######################################
