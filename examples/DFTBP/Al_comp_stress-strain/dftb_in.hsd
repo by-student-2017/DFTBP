@@ -26,7 +26,7 @@ Hamiltonian = xTB {
   #  C = "p"
   #}
   Filling = Fermi {
-    Temperature [Kelvin] = 300
+    Temperature [Kelvin] = 100
     IndependentKFilling = No
   }
   #SlaterKosterFiles = Type2FileNames {
