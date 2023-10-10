@@ -83,11 +83,11 @@ reset_timestep  0
 fix             3 all npt temp 300 300 1 iso 0 0 1 drag 1 
 
 # Set thermo output
-thermo          1000
+thermo          100
 thermo_style    custom step lx ly lz press pxx pyy pzz pe temp
 
 # Run for at least 10 picosecond (assuming 1 fs timestep)
-run             2000
+run             1000
 unfix           3
 
 # Store final cell length for strain calculations
