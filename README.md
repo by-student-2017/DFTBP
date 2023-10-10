@@ -86,6 +86,19 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   3. open equil.xyz on Ovito code
 
 
+## Example (Al, compression, stress-strain, GFN2-xTB, test version) ######################################
+  1. go to examples directory
+```
+cd /mnt/d/lammps-29Oct20/examples/DFTBP/Al_comp_stress-strain
+```
+  2. run
+```
+export OMP_NUM_THREADS=8
+mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. open equil.xyz on Ovito code
+
+
 ## Note (for fix_dftb.h, etc) ######################################
 - ERROR messages:
   + Must use units metal with fix dftbp command
