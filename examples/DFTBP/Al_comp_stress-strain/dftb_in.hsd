@@ -62,7 +62,7 @@ Hamiltonian = xTB {
   Solvation = {}
   #ThirdOrder = No
   #ThirdOrderFull = No
-  #ForceEvaluation = "Traditional"
+  ForceEvaluation = "Traditional"
 }
 Options = {
   WriteAutotestTag = No
