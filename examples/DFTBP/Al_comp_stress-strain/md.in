@@ -49,7 +49,7 @@ neigh_modify    every 1 delay 0 check yes
 variable        dt equal 0.001
 timestep        ${dt}
 
-dump            equil all xyz 10 cfg/equil.xyz
+dump            equil all xyz 10 equil.xyz
 dump_modify     equil element Al
 
 compute csym all centro/atom fcc
