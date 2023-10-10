@@ -87,10 +87,10 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   3. open equil.xyz on Ovito code
 
 
-## Example (PbTiO3, compression, stress-strain, GFN2-xTB, test version) ######################################
+## Example (PbTiO3, MSD, GFN2-xTB, test version) ######################################
   1. go to examples directory
 ```
-cd /mnt/d/lammps-29Oct20/examples/DFTBP/PbTiO3_comp_stress-strain
+cd /mnt/d/lammps-29Oct20/examples/DFTBP/PbTiO3_MSD
 ```
   2. run
 ```
@@ -98,7 +98,7 @@ ulimit -s unlimited
 export OMP_NUM_THREADS=8
 mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 ```
-  3. ./plot_stress_vs_strain_v2.gpl
+  3. ./plot_msd_O.gpl
 
   4. open equil.xyz (in cfg directory) on Ovito code
 
