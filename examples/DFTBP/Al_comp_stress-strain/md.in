@@ -46,7 +46,7 @@ pair_coeff      * *
 neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.001
+variable        dt equal 0.0005
 timestep        ${dt}
 
 dump            equil all xyz 10 equil.xyz
@@ -86,7 +86,7 @@ thermo          100
 thermo_style    custom step lx ly lz press pxx pyy pzz pe temp
 
 # Run for at least 10 picosecond (assuming 1 fs timestep)
-run             1000
+run             2000
 unfix           3
 
 # Store final cell length for strain calculations
