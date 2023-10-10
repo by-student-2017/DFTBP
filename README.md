@@ -5,7 +5,7 @@
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
-- Note 1: "mpirun -np 1" and OpenMP version: Implementing MPI parallelism is not easy, as shown in the video about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.
+- Note 1: "mpirun -np 1" and OpenMP version
 - Note 2: By using "xTB", calculations using many elements are possible. I am looking forward to hearing reports from many people in their papers. 
 
 
@@ -108,6 +108,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - For non-WSL Linux, "/mnt/d" replaces "$HOME" etc (i.d., "/mnt/d" => "$HOME")
 - I have only been able to get it working, so please contact the respective developer for any problems or development issues.
 - Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You probably won't need to make any changes to the "in.lammps" file.
+- Implementing MPI parallelism is not easy, as shown in the [video](https://www.youtube.com/watch?v=RXg6oNIOn1U&t=662s) about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.
 
 
 ## PC specs used for test ######################################
