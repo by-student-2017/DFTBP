@@ -5,7 +5,7 @@
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
-- Note 1: "mpirun -np 1" and OpenMP version
+- Note 1: "mpirun -np 1" and OpenMP version: Implementing MPI parallelism is not easy, as shown in the video about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.
 - Note 2: By using "xTB", calculations using many elements are possible. I am looking forward to hearing reports from many people in their papers. 
 
 
