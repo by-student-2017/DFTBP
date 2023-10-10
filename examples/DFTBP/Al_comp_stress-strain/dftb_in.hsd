@@ -13,7 +13,7 @@ Driver = {}
 Hamiltonian = xTB {
   Method = "GFN2-xTB"
   SCC = Yes
-  SCCTolerance = 1.000000000000000E-02
+  SCCTolerance = 1.000000000000000E-03
   MaxSCCIterations = 1000
   Mixer = Broyden {
     MixingParameter = 0.200000000000000
@@ -36,14 +36,14 @@ Hamiltonian = xTB {
   #  LowerCaseTypeName = No
   #}
   KPointsAndWeights = SuperCellFolding {
-1 0 0
-0 1 0
-0 0 1
+2 0 0
+0 2 0
+0 0 2
 0.0 0.0 0.0
   }
-  Differentiation = FiniteDiff {
-    Delta = 1.000000000000000E-002
-  }
+  #Differentiation = FiniteDiff {
+  #  Delta = 1.000000000000000E-002
+  #}
   #PolynomialRepulsive = {}
   ShellResolvedSCC = No
   #OldSKInterpolation = No
@@ -62,7 +62,7 @@ Hamiltonian = xTB {
   Solvation = {}
   #ThirdOrder = No
   #ThirdOrderFull = No
-  ForceEvaluation = "Traditional"
+  #ForceEvaluation = "Traditional"
 }
 Options = {
   WriteAutotestTag = No
