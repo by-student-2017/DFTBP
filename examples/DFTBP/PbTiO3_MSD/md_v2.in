@@ -19,12 +19,14 @@ group           Ti type 1
 group           Pb type 2
 group           O  type 3
 
+variable        Td equal 273.0 # [K]
+
 # ------------------------ initialize system -------------------------
 
-velocity        all create 300.0 87287 loop geom
+velocity        all create ${Td} 87287 loop geom
 
 variable        kb  equal 8.61733262e-5 # [eV/K]
-variable        kbT equal ${kb}*300 # [eV]
+variable        kbT equal ${kb}*${Td} # [eV]
 variable        p0  equal atoms*${kbT}/vol*(160.21766208*10000.0)
 print "p0 = ${p0} [bar] (The 1st term of equation P = N*kb*T/V + ...)"
 # https://docs.lammps.org/compute_pressure.html
@@ -37,7 +39,7 @@ pair_coeff      * *
 neighbor        2.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.0005 # 0.5 [fs]
+variable        dt equal 0.00025 # 0.25 [fs] (same as ReaxFF)
 timestep        ${dt}
 
 dump            equil all xyz 10 equil.xyz
@@ -47,12 +49,13 @@ thermo          10
 thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi 
 thermo_modify   norm no flush yes
 
+fix             f1 all dftbp dftb_in.hsd NULL
+fix_modify      f1 energy yes
+
 ######################################
 # MINIMIZATION
 #fix             integ all nve
 #fix             therm all langevin 10.0 10.0 0.1 699483
-fix             f1 all dftbp dftb_in.hsd NULL
-fix_modify      f1 energy yes
 
 #fix             emin all box/relax x $(v_p0/3) y $(v_p0/3) z $(v_p0/3)
 #min_style       cg
@@ -67,8 +70,8 @@ fix_modify      f1 energy yes
 # EQUILIBRATION
 reset_timestep  0
 
-#velocity        all create 300 12345 mom yes rot no
-fix             f2 all npt temp 300 300 $(100.0*dt) iso ${p0} ${p0} $(1000.0*dt) drag 1 
+#velocity        all create ${Td} 12345 mom yes rot no
+fix             f2 all npt temp ${Td} ${Td} $(40.0*dt) iso ${p0} ${p0} $(100.0*dt) drag 1 
 
 # Set thermo output
 thermo          10
@@ -101,7 +104,7 @@ thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi v_msdot
 dump            d2 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d2 element ${elems}
 
-fix             f3 all nvt temp 300.0 300.0 $(10.0*dt)
+fix             f3 all nvt temp ${Td} ${Td} $(40.0*dt)
 
 run             2000
 
