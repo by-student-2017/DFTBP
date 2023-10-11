@@ -34,16 +34,14 @@ pair_style      zero 1.0
 pair_coeff      * *
 
 # ------------------------- SETTINGS ---------------------------------
-neighbor        1.0 bin
+neighbor        2.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.002 # 2 [fs]
+variable        dt equal 0.0005 # 0.5 [fs]
 timestep        ${dt}
 
 dump            equil all xyz 10 equil.xyz
 dump_modify     equil element ${elems}
-
-compute csym all centro/atom fcc
 
 thermo          10
 thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi 
@@ -76,7 +74,7 @@ fix             f2 all npt temp 300 300 $(100.0*dt) iso ${p0} ${p0} $(1000.0*dt)
 thermo          10
 thermo_style    custom step lx ly lz press pxx pyy pzz pe temp
 
-dump            d1 all cfg 10 cfg/dump.equil_*.cfg mass type xs ys zs c_csym fx fy fz
+dump            d1 all cfg 10 cfg/dump.equil_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d1 element ${elems}
 
 # Run for at least 10 picosecond (assuming 1 fs timestep)
@@ -103,7 +101,7 @@ thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi v_msdot
 dump            d2 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d2 element ${elems}
 
-fix             f3 all nvt temp 300.0 300.0 $(100.0*dt)
+fix             f3 all nvt temp 300.0 300.0 $(10.0*dt)
 
 run             2000
 
