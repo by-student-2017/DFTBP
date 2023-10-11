@@ -332,7 +332,7 @@ void FixDFTBP::post_force(int vflag){
       fcoords[i*3+j]=coords[i*3+j]*lunitconv;      
     }
   }
-
+  
   //addition for virial
   double volume;
   volume = (latvecs[0]*latvecs[4]*latvecs[8])/lunitconv;
@@ -380,12 +380,12 @@ void FixDFTBP::post_force(int vflag){
   //if(vflag>0){
     //dftbp_get_virial(dftbplus,fstress);
     dftbp_get_stress_tensor(dftbplus,fstress);
-    virial[0]=fstress[0]*sunitconv*volume;
-    virial[1]=fstress[4]*sunitconv*volume;
-    virial[2]=fstress[8]*sunitconv*volume;
-    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume;
-    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume;
-    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume;
+	virial[0]=fstress[0]*sunitconv*volume*(1e-9/29421.02648438959);
+    virial[1]=fstress[4]*sunitconv*volume*(1e-9/29421.02648438959);
+    virial[2]=fstress[8]*sunitconv*volume*(1e-9/29421.02648438959);
+    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume*(1e-9/29421.02648438959);
+    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume*(1e-9/29421.02648438959);
+    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume*(1e-9/29421.02648438959);
     //}
     //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;    
   return;
