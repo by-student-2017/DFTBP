@@ -27,7 +27,7 @@ thermo_modify   norm no flush yes
 
 fix             integ   all nve
 fix             2 all dftbp dftb_in.hsd NULL
-fix_modify      2 energy yes
+fix_modify      2 energy yes # "energy yes" or "virial yes"
 fix             therm   all langevin  10.0 10.0  0.1 699483
 
 fix	        emin all box/relax x 0.0 y 0.0
