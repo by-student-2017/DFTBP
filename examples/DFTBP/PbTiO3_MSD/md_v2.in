@@ -37,7 +37,7 @@ pair_coeff      * *
 neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.004 # 4 [fs]
+variable        dt equal 0.002 # 2 [fs]
 timestep        ${dt}
 
 dump            equil all xyz 10 equil.xyz
