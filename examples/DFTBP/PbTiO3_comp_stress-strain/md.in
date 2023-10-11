@@ -27,7 +27,7 @@ pair_coeff      * *
 neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.002 # 2 [fs]
+variable        dt equal 0.001 # 1 [fs]
 timestep        ${dt}
 
 dump            equil all xyz 10 equil.xyz
@@ -78,27 +78,6 @@ undump          d1
 variable        tmp equal "lx"
 variable        L0 equal ${tmp}
 print           "Initial Length, L0: ${L0}"
-
-######################################
-# MSD
-reset_timestep  0
-
-compute         mymsdO O msd com yes
-
-variable        msdoxO equal "c_mymsdO[1]"
-variable        msdoyO equal "c_mymsdO[2]"
-variable        msdozO equal "c_mymsdO[3]"
-variable      msdototO equal "c_mymsdO[4]"
-
-fix msdT1       O ave/time 1 1 10 v_msdoxO v_msdoyO v_msdozO v_msdototO file msdO_300K
-
-thermo          10
-thermo_style    custom step v_Timer cpu temp etotal fmax lx ly lz vol press v_msdototO
-
-fix             f3 all nvt temp 300.0 300.0 $(100.0*dt)
-run             200
-unfix           f3
-unfix           msdT1
 
 ######################################
 # DEFORMATION
