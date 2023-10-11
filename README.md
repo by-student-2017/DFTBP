@@ -154,6 +154,25 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   + RIKEN
 
 
+## Units (in fix_dftb.h) ######################################
+- double const sunitconv=1.0/0.367493245336341E-01;
+  + 0.367493245336341E-01 = 1/27.211324570273
+  + 1 Ha (DFTB+) = 27.211 eV (Lammps, metal units)
+  + Stress
+- double const funitconv=1.0/0.194469064593167E-01;
+  + 0.194469064593167E-01 = 1/51.422
+  + 1 Ha/Bohr (DFTB+) => 51.422 eV/Angstrom (Lammps, metal units)
+  + Force
+- double const eunitconv=1.0/0.367493245336341E-01;
+  + 0.367493245336341E-01 = 1/27.211324570273
+  + 1 Ha (DFTB+) => 27.211 eV (Lammps, metal units)
+  + Energy
+- double const lunitconv=0.188972598857892E+01;
+  + 0.188972598857892E+01 = 1/0.52918
+  + 1 Bohr (DFTB+) = 0.52918 Angstrom (Lammps, metal units)
+  + Lattice vector
+
+
 ## Original Information ######################################
 # DFTBP
 LAMMPS codes for DFTB+

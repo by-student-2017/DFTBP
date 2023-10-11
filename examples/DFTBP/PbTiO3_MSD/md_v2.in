@@ -48,7 +48,7 @@ fix             therm all langevin 10.0 10.0 0.1 699483
 fix             f1 all dftbp dftb_in.hsd NULL
 fix_modify      f1 energy yes
 
-fix             emin all box/relax x 0.0 y 0.0 z 0.0
+fix             emin all box/relax x 1.0 y 1.0 z 1.0
 min_style       cg
 min_modify      dmax 0.2
 min_modify      line quadratic
@@ -64,7 +64,7 @@ reset_timestep  0
 timestep        0.00025 # 0.25 [fs] (same as ReaxFF)
 
 velocity        all create 300 12345 mom yes rot no
-fix             f2 all npt temp 300 300 $(100.0*dt) iso 0 0 $(1000.0*dt)
+fix             f2 all npt temp 300 300 $(100.0*dt) iso 1.0 1.0 $(1000.0*dt)
 
 # Set thermo output
 thermo          10
