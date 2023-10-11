@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 
 msd_file_name = "msdO_300K"
-timestep = 0.002
+timestep = 0.001
 
 set terminal png
 set out "msd_O.png"
