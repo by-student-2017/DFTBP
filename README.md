@@ -154,7 +154,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   + RIKEN
 
 
-## Units (in fix_dftb.h) ######################################
+## Units (in fix_dftb.h and fix_dftb.cpp) ######################################
 - double const sunitconv=1.0/0.367493245336341E-01;
   + 0.367493245336341E-01 = 1/27.211324570273
   + 1 Ha (DFTB+) = 27.211 eV (Lammps, metal units)
