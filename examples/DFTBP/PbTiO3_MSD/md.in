@@ -50,7 +50,7 @@ fix             therm all langevin 10.0 10.0 0.1 699483
 fix             f1 all dftbp dftb_in.hsd NULL
 fix_modify      f1 energy yes
 
-fix             emin all box/relax x 0.0 y 0.0
+fix             emin all box/relax x 0.0 y 0.0 z 0.0
 min_style       cg
 min_modify      dmax 0.2
 min_modify      line quadratic
