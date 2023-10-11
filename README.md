@@ -127,7 +127,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You probably won't need to make any changes to the "in.lammps" file.
 - Be careful about the first line of the Lammps data file. When outputting with Lammps' write_data, it is necessary to modify it in DFTB+ v.23.1. For example, if you delete the part after ",", it will work fine. I really hope this issue is fixed in a future DFTB+.
 - Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529
-- "virial" for "fix_dftb.cpp": "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell (i.d., [eV/Bohr^3] * CellVol [Bohr^3] => [eV]. This could be done in the lammps script file instead.)
+- "virial" for "fix_dftb.cpp": "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell.
 - In the latest version, a code to calculate volume has been added to "fix_dftb.cpp". If there is no problem with this modification, virial may also be able to be calculated.
 
 
