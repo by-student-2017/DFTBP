@@ -336,11 +336,15 @@ void FixDFTBP::post_force(int vflag){
   //addition for virial
   double volume;
   volume = (latvecs[0]*latvecs[4]*latvecs[8])/lunitconv;
-  // |A| = |latvecs| =
-  // a1 |0 1 2|
-  // a2 |3 4 5|
-  // a3 |6 7 8|
+  //-------------------
+  // |A| = |latvecs| = 
+  //-------------------
+  //   a1 |0 1 2|
+  // = a2 |3 4 5|
+  //   a3 |6 7 8|
+  //-------------------
   // Note: det|A] = V
+  //-------------------
 
   //std::cout<<"DFTB Debug: check point after coordinate set: "<<nAtoms <<std::endl;    
   //dftbp_set_coords(dftbplus,fcoords);
