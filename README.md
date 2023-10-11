@@ -144,7 +144,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 
 
 ## My Wish ######################################
-- The only people who have published the code that links "DFTB+" and "Lammps" are the developers (ORNL and LANL) and myself ("By Student"), who has made it work with the latest version. I strongly look forward to the success of the Max Planck Institute and other motivated individuals.
+- The only people who have published the code that links "DFTB+" and "Lammps" are the developers (ORNL and LANL) and myself ("By Student"), who has made it work with the latest version. I strongly look forward to the success of the Max Planck Computing and Data Facility (MPCDF) and other motivated individuals.
 
 
 ## Acknowledgment ######################################
