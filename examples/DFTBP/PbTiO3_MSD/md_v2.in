@@ -19,7 +19,7 @@ group           Ti type 1
 group           Pb type 2
 group           O  type 3
 
-variable        Td equal 273.0 # [K]
+variable        Td equal 298.0 # [K]
 
 # ------------------------ initialize system -------------------------
 

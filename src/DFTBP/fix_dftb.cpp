@@ -333,6 +333,15 @@ void FixDFTBP::post_force(int vflag){
     }
   }
 
+  //addition for virial
+  double volume;
+  volume = (latvecs[0]*latvecs[4]*latvecs[8])/lunitconv;
+  // |A| = |latvecs| =
+  // a1 |0 1 2|
+  // a2 |3 4 5|
+  // a3 |6 7 8|
+  // Note: det|A] = V
+
   //std::cout<<"DFTB Debug: check point after coordinate set: "<<nAtoms <<std::endl;    
   //dftbp_set_coords(dftbplus,fcoords);
 
@@ -367,12 +376,12 @@ void FixDFTBP::post_force(int vflag){
   //if(vflag>0){
     //dftbp_get_virial(dftbplus,fstress);
     dftbp_get_stress_tensor(dftbplus,fstress);
-    virial[0]=fstress[0]*sunitconv;
-    virial[1]=fstress[4]*sunitconv;
-    virial[2]=fstress[8]*sunitconv;
-    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv;
-    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv;
-    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv;      
+    virial[0]=fstress[0]*sunitconv*volume;
+    virial[1]=fstress[4]*sunitconv*volume;
+    virial[2]=fstress[8]*sunitconv*volume;
+    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume;
+    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume;
+    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume;
     //}
     //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;    
   return;
