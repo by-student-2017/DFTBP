@@ -129,6 +129,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529
 - "virial" for "fix_dftb.cpp": "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell. (i.e., [Pa] => [Ha/Bohr3] => [eV/Bohr^3] * Volume [Bohr^3] => [eV])
 - In the latest version, a code to calculate volume has been added to "fix_dftb.cpp". If there is no problem with this modification, virial may also be able to be calculated.
+- If you set it to a timestep similar to "ReaxFF" or set the pressure to the temperature given as input, you may be able to calculate it without causing NPT to diverge.
 
 
 ## PC specs used for test ######################################
