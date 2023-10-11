@@ -156,7 +156,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 
 ## Units (DFTB+ and Lammps) ######################################
 - double const sunitconv=1.0/0.367493245336341E-01; (in fix_dftb.h)
-  + 0.367493245336341E-01 = 1/27.211324570273
+  + 0.367493245336341E-01 = 1/27.211
   + 1 Ha (DFTB+ and fix_dftb.cpp) = 27.211 eV (Lammps, metal units)
   + Stress
 - double const funitconv=1.0/0.194469064593167E-01; (in fix_dftb.h)
@@ -164,7 +164,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   + 1 Ha/Bohr (DFTB+ and fix_dftb.cpp) => 51.422 eV/Angstrom (Lammps, metal units)
   + Force
 - double const eunitconv=1.0/0.367493245336341E-01; (in fix_dftb.h)
-  + 0.367493245336341E-01 = 1/27.211324570273
+  + 0.367493245336341E-01 = 1/27.211
   + 1 Ha (DFTB+ and fix_dftb.cpp) => 27.211 eV (Lammps, metal units)
   + Energy
 - double const lunitconv=0.188972598857892E+01; (in fix_dftb.h)
