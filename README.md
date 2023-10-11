@@ -121,12 +121,11 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - "virial" for "fix_dftb.cpp": "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell (i.d., [eV/Bohr^3] * CellVol [Bohr^3] => [eV]. This could be done in the lammps script file instead.)
 - This package based on fix_latte.cpp and fix_latte.h
 - For non-WSL Linux, "/mnt/d" replaces "$HOME" etc (i.d., "/mnt/d" => "$HOME")
-- I have only been able to get it working, so please contact the respective developer for any problems or development issues.
-- "DFTB+ v.21.2 and v.22.2" version: It is necessary to rewrite "Makefile" and "Makefile.mpi" to the version number of DFTB+ to be used. You will also need to rewrite the DFTB+ path settings in "~/.bashrc". Please use the "dftbplus.h" included in the DFTB+ include that you want to use. Note that "_Bool" may need to be changed to "bool" in "dftbplus.h".
-- Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You probably won't need to make any changes to the "in.lammps" file.
-- Implementing MPI parallelism is not easy, as shown in the [video](https://www.youtube.com/watch?v=RXg6oNIOn1U&t=662s) about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.
+- I have only been able to get it working, so please contact the respective developer for any problems or development issues.- Implementing MPI parallelism is not easy, as shown in the [video](https://www.youtube.com/watch?v=RXg6oNIOn1U&t=662s) about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.
 - Considering that the official homepage of "xTB" lists TiO2 and MgO as calculation examples, oxides such as SiO2 and ceramics may be suitable for "xTB" rather than metals. Of course, it is also possible that appropriate calculation conditions (Mixing Parameters, etc.) have not been found for the metal system.
 - Based on the phonon results in Si using [Alamode](https://github.com/by-student-2017/alamode-example) , it is assumed that calculations up to about 500 K are highly reliable in "xTB".
+- "DFTB+ v.21.2 and v.22.2" version: It is necessary to rewrite "Makefile" and "Makefile.mpi" to the version number of DFTB+ to be used. You will also need to rewrite the DFTB+ path settings in "~/.bashrc". Please use the "dftbplus.h" included in the DFTB+ include that you want to use. Note that "_Bool" may need to be changed to "bool" in "dftbplus.h".
+- Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You probably won't need to make any changes to the "in.lammps" file.
 
 
 ## PC specs used for test ######################################
