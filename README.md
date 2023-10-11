@@ -125,7 +125,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - I have only been able to get it working, so please contact the respective developer for any problems or development issues.
 - Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You probably won't need to make any changes to the "in.lammps" file.
 - Implementing MPI parallelism is not easy, as shown in the [video](https://www.youtube.com/watch?v=RXg6oNIOn1U&t=662s) about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.
-- Considering that the official homepage of "xTB" lists TiO2 and MgO as calculation examples, oxides such as SiO2 and ceramics may be suitable for "xTB" rather than metals.
+- Considering that the official homepage of "xTB" lists TiO2 and MgO as calculation examples, oxides such as SiO2 and ceramics may be suitable for "xTB" rather than metals. Of course, it is also possible that appropriate calculation conditions (Mixing Parameters, etc.) have not been found for the metal system.
 
 
 ## PC specs used for test ######################################
