@@ -1,6 +1,6 @@
 #!/usr/bin/gnuplot
 
-file_name = "Al_comp_100.def1.txt"
+file_name = "comp_100.def1.txt"
 
 set terminal png font "Arial,12"
 set out "stress_vs_strain.png"

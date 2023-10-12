@@ -77,7 +77,7 @@ variable p1 equal "v_strain"
 variable p2 equal "-pxx/10000"
 variable p3 equal "-pyy/10000"
 variable p4 equal "-pzz/10000"
-fix def1 all print 100 "${p1} ${p2} ${p3} ${p4}" file Al_comp_100.def1.txt screen no
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4}" file comp_100.def1.txt screen no
 
 # Use cfg for AtomEye
 dump            d2 all cfg 10 cfg/dump.comp_*.cfg mass type xs ys zs c_csym fx fy fz
