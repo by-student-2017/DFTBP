@@ -152,6 +152,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 
 ## References ######################################
 - [G. S. Jung, S. Irle and B. G. Sumpter, Carbon 190 (2022) 183-193.](https://doi.org/10.1016/j.carbon.2022.01.002)
+- [OSTI.GOV / Journal Article: Dynamic aspects of graphene deformation and fracture from approximate density functional theory](https://www.osti.gov/biblio/1841487)
 
 
 ## My Wish ######################################
@@ -185,8 +186,8 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 
 
 ## Future plans ######################################
-- CALYPSO: http://www.calypso.cn/ (QE, Siesta, CP2k, DFTB+, Lammps, etc)
 - USPEX: https://uspex-team.org/en/uspex/overview (QE, MOPAC, Lammps, etc)
+- CALYPSO: http://www.calypso.cn/ (QE, Siesta, CP2k, DFTB+, Lammps, etc)
 - CrySPY: https://tomoki-yamashita.github.io/CrySPY_doc/index.html (QE, OpenMX, Lammps, etc)
 - GASP-python: https://github.com/henniggroup/GASP-python (Lammps, etc)
 - EVO: http://cpc.cs.qub.ac.uk/summaries/AEOZ_v1_0.html
