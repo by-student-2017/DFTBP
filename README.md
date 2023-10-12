@@ -185,15 +185,12 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 
 
 ## Future plans ######################################
-- CALYPSO: http://www.calypso.cn/
-- USPEX: https://uspex-team.org/en/uspex/overview
-- CrySPY: https://tomoki-yamashita.github.io/CrySPY_doc/index.html
-- GRINSP: http://www.cristal.org/grinsp/
-- GASP-python: https://github.com/henniggroup/GASP-python
-- MOLPAK: https://sourceforge.net/projects/molpak/
+- CALYPSO: http://www.calypso.cn/ (QE, Siesta, CP2k, DFTB+, Lammps, etc)
+- USPEX: https://uspex-team.org/en/uspex/overview (QE, MOPAC, Lammps, etc)
+- CrySPY: https://tomoki-yamashita.github.io/CrySPY_doc/index.html (QE, OpenMX, Lammps, etc)
+- GASP-python: https://github.com/henniggroup/GASP-python (Lammps, etc)
 - EVO: http://cpc.cs.qub.ac.uk/summaries/AEOZ_v1_0.html
-- AIRSS: https://www.mtg.msm.cam.ac.uk/Codes/AIRSS
-- molSimplify: http://hjkgrp.mit.edu/content/molsimplify-introduction
+- MOLPAK: https://sourceforge.net/projects/molpak/
 
 
 ## Original Information ######################################
