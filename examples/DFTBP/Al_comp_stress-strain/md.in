@@ -38,7 +38,7 @@ variable        elems string "Al"
 
 # ------------------------ initialize system -------------------------
 
-variable         Td equal 300.0 # [K]
+variable         Td equal 77.0 # [K]
 
 velocity        all create ${Td} 87287 loop geom
 
@@ -60,21 +60,21 @@ compute csym all centro/atom fcc
 ######################################
 # MINIMIZATION
 
-thermo          10
-thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi 
-thermo_modify   norm no flush yes
+#thermo          10
+#thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi 
+#thermo_modify   norm no flush yes
 
-dump            minimal all xyz 10 minimal.xyz
-dump_modify     minimal element ${elems}
+#dump            minimal all xyz 10 minimal.xyz
+#dump_modify     minimal element ${elems}
 
-fix             emin all box/relax x 0.0 y 0.0 z 0.0
-min_style       cg
-min_modify      dmax 0.2
-min_modify      line quadratic
-minimize        0.0 1.0e-6 1000 10000
-unfix           emin
+#fix             emin all box/relax x 0.0 y 0.0 z 0.0
+#min_style       cg
+#min_modify      dmax 0.2
+#min_modify      line quadratic
+#minimize        0.0 1.0e-6 1000 10000
+#unfix           emin
 
-undump          minimal
+#undump          minimal
 
 ######################################
 # EQUILIBRATION
