@@ -10,10 +10,11 @@ Geometry = LammpsFormat {
    }
 }
 Driver = {}
-Hamiltonian = xTB {
-  Method = "GFN2-xTB"
+#Hamiltonian = xTB {
+#  Method = "GFN2-xTB"
+Hamiltonian = DFTB {
   SCC = Yes
-  SCCTolerance = 1.000000000000000E-04
+  SCCTolerance = 1.000000000000000E-010
   MaxSCCIterations = 1000
   Mixer = Broyden {
     MixingParameter = 0.200000000000000
@@ -22,19 +23,19 @@ Hamiltonian = xTB {
     MaximalWeight = 100000.000000000
     WeightFactor = 1.000000000000000E-002
   }
-  #MaxAngularMomentum = {
-  #  C = "p"
-  #}
-  #Filling = Fermi {
-  #  Temperature [Kelvin] = 100
-  #  IndependentKFilling = No
-  #}
-  #SlaterKosterFiles = Type2FileNames {
-  #  Separator = "-"
-  #  Suffix = ".skf"
-  #  Prefix = ""
-  #  LowerCaseTypeName = No
-  #}
+  MaxAngularMomentum = {
+    C = "p"
+  }
+  Filling = Fermi {
+    Temperature [Kelvin] = 100
+    IndependentKFilling = No
+  }
+  SlaterKosterFiles = Type2FileNames {
+    Separator = "-"
+    Suffix = ".skf"
+    Prefix = ""
+    LowerCaseTypeName = No
+  }
   KPointsAndWeights = SuperCellFolding {
 4 0 0
 0 4 0
@@ -44,24 +45,24 @@ Hamiltonian = xTB {
   Differentiation = FiniteDiff {
     Delta = 1.000000000000000E-002
   }
-  #PolynomialRepulsive = {}
+  PolynomialRepulsive = {}
   ShellResolvedSCC = No
-  #OldSKInterpolation = No
+  OldSKInterpolation = No
   #RangeSeparated = None {}
   ReadInitialCharges = No
   InitialCharges = {}
   EwaldParameter = 0.00000000000000
   EwaldTolerance = 1.000000000000000E-009
-  #HCorrection = None {}
+  HCorrection = None {}
   SpinPolarisation = {}
   ElectricField = {}
   Solver = RelativelyRobust {}
   Charge = 0.00000000000000
-  #OnSiteCorrection = {}
+  OnSiteCorrection = {}
   Dispersion = {}
   Solvation = {}
-  #ThirdOrder = No
-  #ThirdOrderFull = No
+  ThirdOrder = No
+  ThirdOrderFull = No
   ForceEvaluation = "Traditional"
 }
 Options = {
