@@ -59,10 +59,11 @@ print           "Initial Length, L0: ${L0}"
 # DEFORMATION
 reset_timestep  0
 
-fix             integ all nve
-fix             therm all langevin 10.0 10.0 0.1 699483
+#fix             integ all nve
+#fix             therm all langevin 10.0 10.0 0.1 699483
 
 #fix             f3 all npt temp 10.0 10.0 $(100.0*dt) y 0 0 $(1000.0*dt) z 0 0 $(1000.0*dt) drag 1
+fix             f3 all nvt temp 10.0 10.0 $(100.0*dt)
 variable        srate equal 1.0e10
 variable        srate1 equal "v_srate / 1.0e12"
 fix             f4 all deform 1 x erate ${srate1} # units box remap x
@@ -78,7 +79,7 @@ variable p4 equal "-pzz/10000"
 fix def1 all print 10 "${p1} ${p2} ${p3} ${p4}" file tensile_100.def1.txt screen no
 
 # Use cfg for AtomEye
-dump            d2 all cfg 100 cfg/dump.tensile_*.cfg mass type xs ys zs fx fy fz
+dump            d2 all cfg 10 cfg/dump.tensile_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d2 element ${elems}
 
 # Display thermo
