@@ -1,14 +1,14 @@
-#Geometry = GenFormat {
-# <<<graphene.gen
-#}
-Geometry = LammpsFormat {
-   CommandFile = {
-      <<< "in.lammps"
-   }
-   DataFile = {
-      <<< "graphene.data"
-   }
+Geometry = GenFormat {
+ <<<graphene.gen
 }
+#Geometry = LammpsFormat {
+#   CommandFile = {
+#      <<< "in.lammps"
+#   }
+#   DataFile = {
+#      <<< "graphene.data"
+#   }
+#}
 Driver = {}
 #Hamiltonian = xTB {
 #  Method = "GFN2-xTB"
