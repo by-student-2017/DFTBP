@@ -10,32 +10,32 @@ Geometry = LammpsFormat {
    }
 }
 Driver = {}
-#Hamiltonian = xTB {
-#  Method = "GFN2-xTB"
-Hamiltonian = DFTB {
+Hamiltonian = xTB {
+  Method = "GFN2-xTB"
+#Hamiltonian = DFTB {
   SCC = Yes
   SCCTolerance = 1.000000000000000E-04
-  MaxSCCIterations = 1000
+  MaxSCCIterations = 250
   Mixer = Broyden {
-    MixingParameter = 0.200000000000000
+    MixingParameter = 0.300000000000000
     InverseJacobiWeight = 1.000000000000000E-002
     MinimalWeight = 1.00000000000000
     MaximalWeight = 100000.000000000
     WeightFactor = 1.000000000000000E-002
   }
-  MaxAngularMomentum = {
-    Al = "p"
-  }
+  #MaxAngularMomentum = {
+  #  Al = "p"
+  #}
   Filling = Fermi {
     Temperature [Kelvin] = 100
     IndependentKFilling = No
   }
-  SlaterKosterFiles = Type2FileNames {
-    Separator = "-"
-    Suffix = ".skf"
-    Prefix = ""
-    LowerCaseTypeName = No
-  }
+  #SlaterKosterFiles = Type2FileNames {
+  #  Separator = "-"
+  #  Suffix = ".skf"
+  #  Prefix = ""
+  #  LowerCaseTypeName = No
+  #}
   KPointsAndWeights = SuperCellFolding {
 2 0 0
 0 2 0
@@ -99,4 +99,4 @@ Analysis = {
   AtomResolvedEnergies = No
 }
 ExcitedState = {}
-#Reks = {}
+#Reks = None {}
