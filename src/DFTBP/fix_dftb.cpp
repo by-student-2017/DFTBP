@@ -371,7 +371,8 @@ void FixDFTBP::post_force(int vflag){
   //std::cout<<"DFTB Debug: check point after graidient called: "<<std::endl;      
   for (int i=0;i<nAtoms;i++){
     for(int j=0;j<3;j++){
-      forces[i*3+j]-=gradients[i*3+j]*funitconv;
+      //forces[i*3+j]-=gradients[i*3+j]*funitconv;
+      forces[i*3+j]=-gradients[i*3+j]*funitconv;
     }
   }
   
