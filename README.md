@@ -138,6 +138,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Since it may operate at low temperatures, regardless of the temperature of the experiment, it is important to consider obtaining information at low temperatures, as it is important information for comparison. It is also important to create a large amount of comparable data at low operating temperatures (same temperature).
 - There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
+- "forces[i*3+j]-=gradients[i*3+j]*funitconv;" near line 300 of "fix_dftb.cpp" is "forces[i*3+j]=-gradients[i *3+j]*funitconv;" I'm wondering if it's a typo.
 
 
 ## PC specs used for test ######################################
