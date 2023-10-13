@@ -86,10 +86,10 @@ ParserOptions = {
   StopAfterParsing = No
   IgnoreUnprocessedNodes = No
 }
-#Parallel = {
-#  UseOmpThreads = Yes
-#  Groups = 1
-#}
+Parallel = {
+  UseOmpThreads = Yes
+  Groups = 1
+}
 Analysis = {
   CalculateForces = Yes
   ProjectStates = {}
@@ -99,4 +99,4 @@ Analysis = {
   AtomResolvedEnergies = No
 }
 ExcitedState = {}
-#Reks = None {}
+Reks = None {}
