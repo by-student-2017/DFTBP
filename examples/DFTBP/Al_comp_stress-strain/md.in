@@ -127,7 +127,7 @@ dump_modify     d2 element ${elems}
 thermo          10
 thermo_style    custom step v_strain temp v_p2 v_p3 v_p4 ke pe press
 
-run             2000
+run             20000 # (strain 0.4)
 
 ######################################
 # SIMULATION DONE
