@@ -79,7 +79,7 @@ make mpi
 ```
 
 
-## Example (N in graphene, GFN2-xTB, NVT) ######################################
+## Example (N in graphene, GFN2-xTB) ######################################
   1. go to examples directory
 ```
 cd /mnt/d/lammps-29Oct20/examples/DFTBP/N_in_graphene

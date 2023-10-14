@@ -37,6 +37,4 @@ min_modify      line quadratic
 minimize        0.0 1.0e-8 1000 10000
 unfix		emin
 
-unfix           integ
-fix             3 all npt temp 300 300 1.0 x 0 0 10 y 0 0 10
 run             500
