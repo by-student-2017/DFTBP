@@ -74,8 +74,8 @@ thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi zlo zhi
 dump            d2 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d2 element ${elems}
 
-#fix             f3 all nvt temp ${Td} ${Td} $(100.0*dt)
-fix             f3 all npt temp ${Td} ${Td} $(100.0*dt) iso 0.0 0.0 $(1000.0*dt)
+fix             f3 all nvt temp ${Td} ${Td} $(100.0*dt)
+#fix             f3 all npt temp ${Td} ${Td} $(100.0*dt) iso 0.0 0.0 $(1000.0*dt)
 
 run             5000
 
