@@ -29,31 +29,11 @@ velocity        all create ${Td} 87287 loop geom
 pair_style      zero 1.0
 pair_coeff      * *
 
-fix             f1 all dftbp dftb_in.hsd NULL
-fix_modify      f1 energy yes # "energy yes" or "virial yes"
-
 # ------------------------- SETTINGS ---------------------------------
 neighbor        2.0 bin
 neigh_modify    every 1 delay 0 check yes
 
 timestep        0.00025 # 0.25 [fs]
-
-dump            equil all xyz 10 equil.xyz
-dump_modify     equil element ${elems}
-
-thermo          10
-thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi zlo zhi 
-thermo_modify   norm no flush yes
-
-######################################
-# MINIMIZATION
-
-#fix             emin all box/relax x 0.0 y 0.0 z 0.0
-#min_style       cg
-#min_modify      dmax 0.2
-#min_modify      line quadratic
-#minimize        0.0 1.0e-4 1000 10000
-#unfix           emin
 
 ######################################
 # MSD
@@ -76,6 +56,9 @@ dump_modify     d2 element ${elems}
 
 fix             f3 all nvt temp ${Td} ${Td} $(100.0*dt)
 #fix             f3 all npt temp ${Td} ${Td} $(100.0*dt) iso 0.0 0.0 $(1000.0*dt)
+
+fix             f1 all dftbp dftb_in.hsd NULL
+fix_modify      f1 energy yes # "energy yes" or "virial yes"
 
 run             5000
 
