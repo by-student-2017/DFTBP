@@ -1,6 +1,6 @@
 # DFTBP 
 - LAMMPS codes for DFTB+
-- Important !!!: I gave up on improving it because I couldn't calculate things like stress-strain correctly as in the paper. At a later date, we plan to check whether the results are similar to those of PLUMED.
+- Important !!!: I gave up on improving it because I couldn't calculate things like stress-strain correctly as in the paper. At a later date, I plan to check whether the results are similar to those of PLUMED.
 - Tests: 
   + DFTB+ v.23.1 
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
