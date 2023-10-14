@@ -36,7 +36,7 @@ fix_modify      f1 energy yes # "energy yes" or "virial yes"
 neighbor        2.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-timestep        0.002 # 2 [fs]
+timestep        0.00025 # 0.25 [fs]
 
 dump            equil all xyz 10 equil.xyz
 dump_modify     equil element ${elems}
@@ -76,7 +76,7 @@ dump_modify     d2 element ${elems}
 
 fix             f3 all nvt temp ${Td} ${Td} $(100.0*dt)
 
-run             500
+run             5000
 
 ######################################
 # SIMULATION DONE
