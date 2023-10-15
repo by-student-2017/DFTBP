@@ -135,11 +135,11 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529 
 - Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
 - A code to calculate volume has been added to "fix_dftb.cpp". If there is no problem with this modification, virial may also be able to be calculated. (old information: "virial" for "fix_dftb.cpp": "compute energy_all" has been killed because if you rewrite the code related to the DFTB+ app, it will show "failed" in the error or test check. Therefore, energy_all[1] for repulsion energy and energy_all[2] for electron energy do not show correct values. The virial energy_all[3] to [8] correspond to the original code if you multiply the Pa unit by the volume of the cell (i.e., [Pa] => [Ha/Bohr3] => [eV/Bohr^3] * Volume [Bohr^3] => [eV]).)
-- If you set it to a timestep similar to "ReaxFF" or set the pressure to the temperature given as input, you may be able to calculate it without causing NPT to diverge. 
 - Since it may operate at low temperatures, regardless of the temperature of the experiment, it is important to consider obtaining information at low temperatures, as it is important information for comparison. It is also important to create a large amount of comparable data at low operating temperatures (same temperature).
 - There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 - I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
+- DFTB+ forces are consistent with Lammps. However, it seems that the force-related part is missing from the pressure in the output of Lammps. I don't understand how the paper calculates the correct stress-strain.
 
 
 ## PC specs used for test ######################################

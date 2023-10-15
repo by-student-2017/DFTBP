@@ -29,16 +29,16 @@ velocity        all create ${Td} 87287 loop geom
 pair_style      zero 1.0
 pair_coeff      * *
 
-# ------------------------- SETTINGS ---------------------------------
-neighbor        2.0 bin
+neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-timestep        0.00025 # 0.25 [fs]
+variable        dt equal 0.0005 # 0.5 [fs]
+timestep        ${dt}
 
-######################################
-# MSD
-reset_timestep  0
+dump            d1 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz
+dump_modify     d1 element ${elems}
 
+# ------------------------- MSD --------------------------------------
 compute         mymsdO O msd com yes
 
 variable        msdoxO equal "c_mymsdO[1]"
@@ -50,22 +50,15 @@ fix             msdT1 O ave/time 1 1 10 v_msdoxO v_msdoyO v_msdozO v_msdototO fi
 
 thermo          10
 thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi zlo zhi v_msdototO
+thermo_modify   norm no flush yes
 
-dump            d2 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz
-dump_modify     d2 element ${elems}
-
-fix             f3 all nvt temp ${Td} ${Td} $(100.0*dt)
-#fix             f3 all npt temp ${Td} ${Td} $(100.0*dt) iso 0.0 0.0 $(1000.0*dt)
+# ------------------------- SETTINGS ---------------------------------
+fix             integ   all nve
+fix             therm   all langevin  10.0 10.0  0.1 699483
 
 fix             f1 all dftbp dftb_in.hsd NULL
 fix_modify      f1 energy yes # "energy yes" or "virial yes"
 
-run             5000
+run             2000
 
-######################################
-# SIMULATION DONE
-print "All done"
-
-######################################
-# Note
-print "The rapid change in stress above a certain strain is due to the introduction of large deformations such as dislocations into the system."
+# ------------------------- Ende -------------------------------------
