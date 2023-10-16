@@ -1,6 +1,5 @@
 # DFTBP 
 - LAMMPS codes for DFTB+
-- Important !!!: I gave up on improving it because I couldn't calculate things like stress-strain correctly as in the paper. At a later date, I plan to check whether the results are similar to those of PLUMED.
 - Tests: 
   + DFTB+ v.23.1 
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
@@ -139,7 +138,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 - I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
-- DFTB+ forces are consistent with Lammps. However, it seems that the force-related part is missing from the pressure in the output of Lammps. I don't understand how the paper calculates the correct stress-strain.
+- In my current modified version, "virial" was not working properly, so it turned out that the second term of the pressure in "lammps" was not calculated correctly.
 
 
 ## PC specs used for test ######################################
