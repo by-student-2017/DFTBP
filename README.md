@@ -148,6 +148,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
 - There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
 - I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
+- I compared the output files of DFTB+ and Lammps at 0 K and confirmed that the forces and pressures are almost the same.
 - The second term of pressure (lammps) is changed with "virial (fix_dftp.cpp)". 
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 
