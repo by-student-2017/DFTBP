@@ -198,7 +198,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   + Lattice vector
 
 
-## Units (DFTB+ and Lampps output) ######################################
+## Units (DFTB+ and Lammps output) ######################################
 - force : DFTB+ (results.tag: Ha/Bohr), Lammps (eV/Angstrom)
 - stress: DFTB+ (results.tag: au), Lammps (bar = 100 kPa = 0.1 MPa)
   + (dftbplus.h) stress: Pa
