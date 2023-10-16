@@ -186,6 +186,12 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   + Lattice vector
 
 
+## Units (DFTB+ and Lammps) ######################################
+- force : DFTB+ (results.tag: Ha/Bohr), Lammps (eV/Angstrom)
+- stress: DFTB+ (results.tag: Pa ?), Lammps (bar = 100 kPa = 0.1 MPa)
+- volume: DFTB+ (results.tag: Ha/Bohr), Lammps (eV/Angstrom)
+
+
 ## Future plans ######################################
 - USPEX: https://uspex-team.org/en/uspex/overview (QE, MOPAC, Lammps, etc)
 - CALYPSO: http://www.calypso.cn/ (QE, Siesta, CP2k, DFTB+, Lammps, etc)
