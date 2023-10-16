@@ -138,7 +138,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   + Fix dftbp should come after all other integration fixes
 - This package based on fix_latte.cpp and fix_latte.h
 - For non-WSL Linux, "/mnt/d" replaces "$HOME" etc (i.d., "/mnt/d" => "$HOME")
-- I have only been able to get it working, so please contact the respective developer for any problems or development issues.
+- I have only been able to get it (DFTBP) working, so please contact the respective developer for any problems or development issues.
 - Implementing MPI parallelism is not easy, as shown in the [video](https://www.youtube.com/watch?v=RXg6oNIOn1U&t=662s) about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.- "DFTB+ v.21.2 and v.22.2" version: You will also need to rewrite the DFTB+ path settings in "~/.bashrc". Please use the "dftbplus.h" included in the DFTB+ include that you want to use. Note that "_Bool" may need to be changed to "bool" in "dftbplus.h".
 - Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You won't need to make any changes to the "in.lammps" file.
 - Be careful about the first line of the Lammps data file. When outputting with Lammps' write_data, it is necessary to modify it in DFTB+ v.23.1. For example, if you delete the part after ",", it will work fine. I really hope this issue is fixed in a future DFTB+.
