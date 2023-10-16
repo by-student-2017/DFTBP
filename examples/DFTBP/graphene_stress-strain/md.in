@@ -39,9 +39,9 @@ print           "Initial Length, L0: ${L0}"
 # DEFORMATION
 reset_timestep  0
 
-#fix             f3 all npt temp 10.0 10.0 $(100.0*dt) y 0 0 $(1000.0*dt) z 0 0 $(1000.0*dt) drag 1
-fix             f3 all nvt temp 10.0 10.0 $(100.0*dt)
-variable        srate equal 1.0e10
+fix             f3 all npt temp 10.0 10.0 $(100.0*dt) y 0 0 $(1000.0*dt) z 0 0 $(1000.0*dt) drag 1
+#fix             f3 all nvt temp 10.0 10.0 $(100.0*dt)
+variable        srate equal 1.0e11
 variable        srate1 equal "v_srate / 1.0e12"
 fix             f4 all deform 1 x erate ${srate1} # units box remap x
 

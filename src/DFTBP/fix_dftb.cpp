@@ -381,12 +381,12 @@ void FixDFTBP::post_force(int vflag){
   //if(vflag>0){
     //dftbp_get_virial(dftbplus,fstress);
     dftbp_get_stress_tensor(dftbplus,fstress);
-	virial[0]=fstress[0]*sunitconv*volume*(1e-9/29421.02648438959);
-    virial[1]=fstress[4]*sunitconv*volume*(1e-9/29421.02648438959);
-    virial[2]=fstress[8]*sunitconv*volume*(1e-9/29421.02648438959);
-    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume*(1e-9/29421.02648438959);
-    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume*(1e-9/29421.02648438959);
-    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume*(1e-9/29421.02648438959);
+    virial[0]=fstress[0]*sunitconv*volume; //*(1e-9/29421.02648438959);
+    virial[1]=fstress[4]*sunitconv*volume; //*(1e-9/29421.02648438959);
+    virial[2]=fstress[8]*sunitconv*volume; //*(1e-9/29421.02648438959);
+    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume; //*(1e-9/29421.02648438959);
+    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume; //*(1e-9/29421.02648438959);
+    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume; //*(1e-9/29421.02648438959);
     //}
     //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;    
   return;
@@ -554,7 +554,7 @@ double FixDFTBP::compute_vector(int n)
   energy_all[5]=virial[2];
   energy_all[6]=virial[3];
   energy_all[7]=virial[4];
-  energy_all[8]=virial[5];  
+  energy_all[8]=virial[5];
   
   return energy_all[n];
 }
