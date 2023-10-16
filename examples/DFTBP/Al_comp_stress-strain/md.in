@@ -41,7 +41,7 @@ group           Al type 1
 
 variable         Td equal 300.0 # [K]
 
-velocity        all create ${Td} 87287 loop geom
+velocity        all create ${Td} 12345 mom yes rot no
 
 # ------------------------ FORCE FIELDS ------------------------------
 pair_style      zero 1.0
@@ -51,11 +51,11 @@ pair_coeff      * *
 neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.00025 # 0.25 [fs]
+variable        dt equal 0.001 # 1.0 [fs]
 timestep        ${dt}
 
 # Use cfg for Ovito or AtomEye
-dump            d1 all cfg 100 cfg/dump.comp_*.cfg mass type xs ys zs fx fy fz
+dump            d1 all cfg 10 cfg/dump.comp_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d1 element ${elems}
 
 # Store final cell length for strain calculations
@@ -73,27 +73,27 @@ variable p1 equal "v_strain"
 variable p2 equal "-pxx/10000"
 variable p3 equal "-pyy/10000"
 variable p4 equal "-pzz/10000"
-fix def1 all print 100 "${p1} ${p2} ${p3} ${p4}" file comp_100.def1.txt screen no
+fix def1 all print 10 "${p1} ${p2} ${p3} ${p4}" file comp_100.def1.txt screen no
 
 # Display thermo
-thermo          100
+thermo          10
 thermo_style    custom step v_strain temp v_p2 v_p3 v_p4 ke pe press
 thermo_modify   norm no flush yes
 
 # ------------------------- SETTINGS ---------------------------------
 
-#fix             integ   all nve
-#fix             therm   all langevin ${Td} ${Td} $(1000.0*dt) 699483
+fix             integ   all nve
+fix             therm   all langevin ${Td} ${Td} $(1000.0*dt) 699483
 #fix             f1 all nvt temp ${Td} ${Td} $(1000.0*dt)
-fix             f1 all npt temp ${Td} ${Td} $(1000.0*dt) y 1.0 1.0 $(1000.0*dt) z 1.0 1.0 $(1000.0*dt) drag 1
+#fix             f1 all npt temp ${Td} ${Td} $(1000.0*dt) y 1.0 1.0 $(1000.0*dt) z 1.0 1.0 $(1000.0*dt) drag 1
 
-variable        srate equal 1.0e8
+variable        srate equal 1.0e10
 variable        srate1 equal "-v_srate / 1.0e12"
 fix             f2 all deform 1 x erate ${srate1} units box remap x
 
 fix             f3 all dftbp dftb_in.hsd NULL
 fix_modify      f3 energy yes # "energy yes" or "virial yes"
 
-run             20000
+run             200
 
 # ------------------------- Ende -------------------------------------
