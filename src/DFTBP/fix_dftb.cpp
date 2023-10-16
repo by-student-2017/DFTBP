@@ -294,7 +294,7 @@ void FixDFTBP::post_force(int vflag){
   flags[4] = vflag_atom && thermo_virial;      //   virial, 0 for no
   flags[5] = neighflag;       // 1 to pass neighbor list to DFTBP, 0 for no
 
-  // setup DFTBP arguments from lammps
+  // setup DFTBP arguments (from lammps to DFTBP and DFTB+)
   int nAtoms = atom->nlocal;
   double *coords = &atom->x[0][0];
   int *type = atom->type;
@@ -335,7 +335,7 @@ void FixDFTBP::post_force(int vflag){
   
   //addition for virial
   double volume;
-  volume = (latvecs[0]*latvecs[4]*latvecs[8])/lunitconv;
+  volume = (latvecs[0]*latvecs[4]*latvecs[8]);
   //-------------------
   // |A| = |latvecs| = 
   //-------------------
@@ -364,6 +364,7 @@ void FixDFTBP::post_force(int vflag){
 
   //std::cout<<"DFTB Debug: check point after energy called: "<<std::endl;    
   //Force should be always updated! 
+
   
   dftbp_get_gradients(dftbplus,gradients);
 
@@ -375,20 +376,21 @@ void FixDFTBP::post_force(int vflag){
     }
   }
   
-  //std::cout<<"DFTB Debug: check point after force set: "<<std::endl;    
+  //std::cout<<"DFTB Debug: check point after force set: "<<std::endl;
   //energy update only vflag>1  
   //if(vflag>0){
     //dftbp_get_virial(dftbplus,fstress);
     dftbp_get_stress_tensor(dftbplus,fstress);
-    virial[0]=fstress[0]*sunitconv*volume; //*(1e-9/29421.02648438959);
-    virial[1]=fstress[4]*sunitconv*volume; //*(1e-9/29421.02648438959);
-    virial[2]=fstress[8]*sunitconv*volume; //*(1e-9/29421.02648438959);
-    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume; //*(1e-9/29421.02648438959);
-    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume; //*(1e-9/29421.02648438959);
-    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume; //*(1e-9/29421.02648438959);
-	// The virial refers to the second term in the pressure equation at lammps.
+    // fstress [Pa] (DFTB+) -> *sunitconv*volum -> virial [eV] -> press [bar] (lammps)
+    // The virial refers to the second term in the pressure equation at lammps.
+    virial[0]=fstress[0]*sunitconv*volume;
+    virial[1]=fstress[4]*sunitconv*volume;
+    virial[2]=fstress[8]*sunitconv*volume;
+    virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume;
+    virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume;
+    virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume;
     //}
-    //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;    
+    //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;
   return;
 }
 
