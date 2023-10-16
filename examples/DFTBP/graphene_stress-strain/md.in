@@ -74,6 +74,6 @@ fix             f2 all deform 1 x erate ${srate1} units box remap x
 fix             f3 all dftbp dftb_in.hsd NULL
 fix_modify      f3 energy yes # "energy yes" or "virial yes"
 
-run             200
+run             400
 
 # ------------------------- Ende -------------------------------------
