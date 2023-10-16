@@ -77,7 +77,6 @@ make package-status
 make mpi
 ```
 
-
 ## Example (graphene, stress-strain, test version) ######################################
   1. go to examples directory
 ```
@@ -93,7 +92,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   4. open *.cfg (in cfg directory) on Ovito code
 
 
-## Example (N in graphene, GFN2-xTB) ######################################
+## Example (N in graphene, GFN2-xTB, test version) ######################################
   1. go to examples directory
 ```
 cd /mnt/d/lammps-29Oct20/examples/DFTBP/N_in_graphene
