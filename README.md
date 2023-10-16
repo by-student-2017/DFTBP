@@ -201,10 +201,12 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 ## Units (DFTB+ and Lampps output) ######################################
 - force : DFTB+ (results.tag: Ha/Bohr), Lammps (eV/Angstrom)
 - stress: DFTB+ (results.tag: Ha/Bohr^3, Pa or au ?), Lammps (bar = 100 kPa = 0.1 MPa)
-  + (DFTB+ manual): "force related energy"
+  + (DFTB+ output): volume:
   + "elastic[ii][jj] /= (PRESURE_AU * 1.0E9) # Convert to GPa": Inue 134 in calcelastic (python3 code): au -(0.339893208050290E-13 * 1.0E9) -> GPa
   + ("fix external command" on Lammps) energy and virial are energy units [eV]. (https://docs.lammps.org/fix_external.html)
-- volume: DFTB+ (results.tag: Ha/Bohr), Lammps (eV/Angstrom)
+  + Ref. VASP: E = V * PSTRESS (https://www.vasp.at/wiki/index.php/PSTRESS)
+- volume: DFTB+ (results.tag: au^3 = Bohr^3), Lammps (A^3 = Angstrom^3)
+  + (DFTB+ output): volume: [au^3] and [A^3]
 
 
 ## Future plans ######################################
