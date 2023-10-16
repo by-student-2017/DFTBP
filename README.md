@@ -151,6 +151,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Based on the phonon results in Si using [Alamode](https://github.com/by-student-2017/alamode-example) , it is assumed that calculations up to about 500 K are highly reliable in "xTB".
 - Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529 
 - Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
+- error with conserved quantity when using fix external pf/callback and fix NPT or MSST: https://matsci.org/t/error-with-conserved-quantity-when-using-fix-external-pf-callback-and-fix-npt-or-msst/26646
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 
 
