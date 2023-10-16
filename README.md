@@ -146,10 +146,9 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Be careful about the first line of the Lammps data file. When outputting with Lammps' write_data, it is necessary to modify it in DFTB+ v.23.1. For example, if you delete the part after ",", it will work fine. I really hope this issue is fixed in a future DFTB+.
 - Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529 
 - Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
-- A code to calculate volume has been added to "fix_dftb.cpp". If there is no problem with this modification, virial (pressure) may also be able to be calculated.
 - There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
 - I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
-- The second term of pressure (lammps) is changed with "virial (fix_dftp.cpp)". The original DFTBP is used as a reference, but the comments in dftbplus.h indicate that both the DFTB+ formula is Pascal, which I am not satisfied with. I would like to get information from many people regarding this as well.
+- The second term of pressure (lammps) is changed with "virial (fix_dftp.cpp)". 
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 
 
