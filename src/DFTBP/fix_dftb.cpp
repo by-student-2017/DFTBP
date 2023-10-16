@@ -294,7 +294,7 @@ void FixDFTBP::post_force(int vflag){
   flags[4] = vflag_atom && thermo_virial;      //   virial, 0 for no
   flags[5] = neighflag;       // 1 to pass neighbor list to DFTBP, 0 for no
 
-  // setup DFTBP arguments
+  // setup DFTBP arguments from lammps
   int nAtoms = atom->nlocal;
   double *coords = &atom->x[0][0];
   int *type = atom->type;
@@ -329,7 +329,7 @@ void FixDFTBP::post_force(int vflag){
   
   for (int i=0;i<nAtoms;i++){
     for(int j=0;j<3;j++){
-      fcoords[i*3+j]=coords[i*3+j]*lunitconv;      
+      fcoords[i*3+j]=coords[i*3+j]*lunitconv;
     }
   }
   
@@ -364,7 +364,6 @@ void FixDFTBP::post_force(int vflag){
 
   //std::cout<<"DFTB Debug: check point after energy called: "<<std::endl;    
   //Force should be always updated! 
-
   
   dftbp_get_gradients(dftbplus,gradients);
 
@@ -387,6 +386,7 @@ void FixDFTBP::post_force(int vflag){
     virial[3]=0.5*(fstress[1]+fstress[3])*sunitconv*volume; //*(1e-9/29421.02648438959);
     virial[4]=0.5*(fstress[2]+fstress[6])*sunitconv*volume; //*(1e-9/29421.02648438959);
     virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume; //*(1e-9/29421.02648438959);
+	// The virial refers to the second term in the pressure equation at lammps.
     //}
     //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;    
   return;
