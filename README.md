@@ -144,12 +144,11 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - "DFTB+ v.21.2 and v.22.2" version: You will also need to rewrite the DFTB+ path settings in "~/.bashrc". Please use the "dftbplus.h" included in the DFTB+ include that you want to use. Note that "_Bool" may need to be changed to "bool" in "dftbplus.h".
 - Since "DFTB+ v.23.1" and later can read the lammps structure file, there is no need to worry about whether it is consistent with the conventional DFTB+ input file (*.gen). You won't need to make any changes to the "in.lammps" file.
 - Be careful about the first line of the Lammps data file. When outputting with Lammps' write_data, it is necessary to modify it in DFTB+ v.23.1. For example, if you delete the part after ",", it will work fine. I really hope this issue is fixed in a future DFTB+.
-- Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529 
-- Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
-- There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
-- I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
 - The second term of pressure (lammps) is changed with "virial (fix_dftp.cpp)". 
 - By comparing the output files of DFTB+ and Lammps at 0 K, we were able to confirm that the force and pressure are almost the same.
+- Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529 
+- Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
+- I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 
 
