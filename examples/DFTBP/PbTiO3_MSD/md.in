@@ -32,7 +32,7 @@ pair_coeff      * *
 neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.0005 # 0.5 [fs]
+variable        dt equal 0.0025 # 0.25 [fs] (same as ReaxFF)
 timestep        ${dt}
 
 dump            d1 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz
@@ -49,7 +49,7 @@ variable      msdototO equal "c_mymsdO[4]"
 fix             msdT1 O ave/time 1 1 10 v_msdoxO v_msdoyO v_msdozO v_msdototO file msdO_300K
 
 thermo          10
-thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi zlo zhi v_msdototO
+thermo_style    custom step temp ke pe press pxx pyy pzz xlo xhi ylo yhi zlo zhi v_msdototO 
 thermo_modify   norm no flush yes
 
 # ------------------------- SETTINGS ---------------------------------
@@ -57,7 +57,7 @@ fix             integ   all nve
 fix             therm   all langevin ${Td} ${Td} $(200.0*dt) 699483
 
 fix             f1 all dftbp dftb_in.hsd NULL
-fix_modify      f1 virial yes # "energy yes" or "virial yes"
+fix_modify      f1 energy yes # "energy yes" or "virial yes"
 
 run             2000
 

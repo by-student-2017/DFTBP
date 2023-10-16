@@ -14,7 +14,7 @@ Hamiltonian = xTB {
   Method = "GFN1-xTB" # GFN1-xTB, IPEA1-xTB, GFN2-xTB
 #Hamiltonian = DFTB {
   SCC = Yes
-  SCCTolerance = 1.000000000000000E-03
+  SCCTolerance = 1.000000000000000E-04
   MaxSCCIterations = 1000
   Mixer = Broyden {
     #MixingParameter = 0.200000000000000
@@ -37,10 +37,10 @@ Hamiltonian = xTB {
   #  LowerCaseTypeName = No
   #}
   KPointsAndWeights = SuperCellFolding {
-1 0 0
-0 1 0
-0 0 1
-0.0 0.0 0.0
+2 0 0
+0 2 0
+0 0 2
+0.5 0.5 0.5
   }
   #Differentiation = FiniteDiff {
   #  Delta = 1.000000000000000E-002

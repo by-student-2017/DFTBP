@@ -106,7 +106,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   3. open equil.xyz on Ovito code
 
 
-## Example (PbTiO3, MSD, GFN2-xTB, test version) ######################################
+## Example (PbTiO3, MSD, GFN1-xTB, test version) ######################################
   1. go to examples directory
 ```
 cd /mnt/d/lammps-29Oct20/examples/DFTBP/PbTiO3_MSD
