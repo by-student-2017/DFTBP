@@ -32,7 +32,7 @@ pair_coeff      * *
 neighbor        1.0 bin
 neigh_modify    every 1 delay 0 check yes
 
-variable        dt equal 0.0025 # 0.25 [fs] (same as ReaxFF)
+variable        dt equal 0.00025 # 0.25 [fs] (same as ReaxFF)
 timestep        ${dt}
 
 dump            d1 all cfg 10 cfg/dump.msd_*.cfg mass type xs ys zs fx fy fz

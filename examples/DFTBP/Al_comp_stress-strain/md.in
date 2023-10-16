@@ -87,13 +87,13 @@ fix             therm   all langevin ${Td} ${Td} $(1000.0*dt) 699483
 #fix             f1 all nvt temp ${Td} ${Td} $(1000.0*dt)
 #fix             f1 all npt temp ${Td} ${Td} $(1000.0*dt) y 1.0 1.0 $(1000.0*dt) z 1.0 1.0 $(1000.0*dt) drag 1
 
-variable        srate equal 1.0e10
+variable        srate equal 1.0e9
 variable        srate1 equal "-v_srate / 1.0e12"
 fix             f2 all deform 1 x erate ${srate1} units box remap x
 
 fix             f3 all dftbp dftb_in.hsd NULL
 fix_modify      f3 energy yes # "energy yes" or "virial yes"
 
-run             200
+run             2000
 
 # ------------------------- Ende -------------------------------------
