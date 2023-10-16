@@ -4,7 +4,7 @@ Geometry = GenFormat {
 Driver = {}
 Hamiltonian = DFTB {
   SCC = Yes
-  SCCTolerance = 1.000000000000000E-05
+  SCCTolerance = 1.000000000000000E-010
   MaxSCCIterations = 1000
   Mixer = Broyden {
     MixingParameter = 0.200000000000000
@@ -38,7 +38,7 @@ Hamiltonian = DFTB {
   PolynomialRepulsive = {}
   ShellResolvedSCC = No
   OldSKInterpolation = No
-  RangeSeparated = None {}
+  #RangeSeparated = None {}
   ReadInitialCharges = No
   InitialCharges = {}
   EwaldParameter = 0.00000000000000
@@ -72,14 +72,14 @@ Options = {
 ParserOptions = {
   ParserVersion = 8
   WriteHSDInput = Yes
-  WriteXMLInput = No
+  #WriteXMLInput = No
   StopAfterParsing = No
   IgnoreUnprocessedNodes = No
 }
-Parallel = {
-  UseOmpThreads = Yes
-  Groups = 1
-}
+#Parallel = {
+#  UseOmpThreads = Yes
+#  Groups = 1
+#}
 Analysis = {
   CalculateForces = Yes
   ProjectStates = {}
@@ -89,4 +89,4 @@ Analysis = {
   AtomResolvedEnergies = No
 }
 ExcitedState = {}
-Reks = {}
+#Reks = {}
