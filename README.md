@@ -147,7 +147,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Be careful about the first line of the Lammps data file. When outputting with Lammps' write_data, it is necessary to modify it in DFTB+ v.23.1. For example, if you delete the part after ",", it will work fine. I really hope this issue is fixed in a future DFTB+.
 - Lattice constant optimization problem: https://github.com/grimme-lab/xtb/discussions/529 
 - Error in NPT Simulations Using xTB: https://github.com/dftbplus/dftbplus/issues/1079
-- A code to calculate volume has been added to "fix_dftb.cpp". If there is no problem with this modification, virial (lammpsでのpressureに関係している) may also be able to be calculated.
+- A code to calculate volume has been added to "fix_dftb.cpp". If there is no problem with this modification, virial (pressure) may also be able to be calculated.
 - Since it may operate at low temperatures, regardless of the temperature of the experiment, it is important to consider obtaining information at low temperatures, as it is important information for comparison. It is also important to create a large amount of comparable data at low operating temperatures (same temperature).
 - There's nothing more I can do. I would like the developers of "xTB" and "DFTB+" to actively work to ensure that calculations for various systems operate correctly under periodic boundary conditions.
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
