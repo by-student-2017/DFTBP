@@ -144,7 +144,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - Be careful about the first line of the Lammps data file. When outputting with Lammps' write_data, it is necessary to modify it in DFTB+ v.23.1. For example, if you delete the part after ",", it will work fine. I really hope this issue is fixed in a future DFTB+.
 - I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;".
 - The second term of pressure (lammps) is changed with "virial (fix_dftp.cpp)". 
-- By comparing the output files of DFTB+ and Lammps at 0 K, we were able to confirm that the force and pressure are almost the same.
+- By comparing the output files of DFTB+ and Lammps at 0 K, I was able to confirm that the force and pressure are almost the same.
 - Implementing MPI parallelism is not easy, as shown in the [video](https://www.youtube.com/watch?v=RXg6oNIOn1U&t=662s) about "MPI-parallelization needs some care (but possible)" and DFTB+'s API.- "DFTB+ v.21.2 and v.22.2" version: You will also need to rewrite the DFTB+ path settings in "~/.bashrc". 
 - Considering that the official homepage of "xTB" lists TiO2 and MgO as calculation examples, oxides such as SiO2 and ceramics may be suitable for "xTB" rather than metals. Of course, it is also possible that appropriate calculation conditions (Mixing Parameters, etc.) have not been found for the metal system.
 - Based on the phonon results in Si using [Alamode](https://github.com/by-student-2017/alamode-example) , it is assumed that calculations up to about 500 K are highly reliable in "xTB".
