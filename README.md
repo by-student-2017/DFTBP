@@ -79,6 +79,21 @@ make mpi
 ```
 
 
+## Example (graphene, stress-strain, test version) ######################################
+  1. go to examples directory
+```
+cd /mnt/d/lammps-29Oct20/examples/DFTBP/graphene_stress-strain
+```
+  2. run
+```
+export OMP_NUM_THREADS=4
+mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. ./plot_stress_vs_strain_v2.gpl
+
+  4. open *.cfg (in cfg directory) on Ovito code
+
+
 ## Example (N in graphene, GFN2-xTB) ######################################
   1. go to examples directory
 ```
