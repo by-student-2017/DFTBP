@@ -54,11 +54,20 @@ thermo_modify   norm no flush yes
 
 # ------------------------- SETTINGS ---------------------------------
 #fix             integ   all nve
-#fix             therm   all langevin ${Td} ${Td} $(200.0*dt) 699483
+#fix             therm   all langevin ${Td} ${Td} $(400.0*dt) 699483
 fix             f2 all nvt temp ${Td} ${Td} $(400.0*dt)
 
 fix             f1 all dftbp dftb_in.hsd NULL
 fix_modify      f1 energy yes # "energy yes" or "virial yes"
+
+# ------------------------- minimization -----------------------------
+fix             emin all box/relax x 1.0 y 1.0 z 1.0
+min_style       cg
+min_modify      dmax 0.2
+min_modify      line quadratic
+minimize        0.0 1.0e-6 1000 10000
+unfix           emin
+#---------------------------------------------------------------------
 
 run             2000
 
