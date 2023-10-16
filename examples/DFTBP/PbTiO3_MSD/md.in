@@ -54,12 +54,12 @@ thermo_modify   norm no flush yes
 
 # ------------------------- SETTINGS ---------------------------------
 fix             integ   all nve
-fix             therm   all langevin ${Td} ${Td} $(400.0*dt) 699483
-#fix             f2 all nvt temp ${Td} ${Td} $(400.0*dt)
+fix             therm   all langevin ${Td} ${Td} $(20.0*dt) 699483
+#fix             f2 all nvt temp ${Td} ${Td} $(20.0*dt)
 
 fix             f1 all dftbp dftb_in.hsd NULL
 fix_modify      f1 energy yes # "energy yes" or "virial yes"
 
-run             2000
+run             40000
 
 # ------------------------- Ende -------------------------------------
