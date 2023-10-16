@@ -55,7 +55,7 @@ variable        dt equal 0.00025 # 0.25 [fs]
 timestep        ${dt}
 
 # Use cfg for Ovito or AtomEye
-dump            d1 all cfg 10 cfg/dump.comp_*.cfg mass type xs ys zs fx fy fz
+dump            d1 all cfg 100 cfg/dump.comp_*.cfg mass type xs ys zs fx fy fz
 dump_modify     d1 element ${elems}
 
 # Store final cell length for strain calculations
@@ -73,10 +73,10 @@ variable p1 equal "v_strain"
 variable p2 equal "-pxx/10000"
 variable p3 equal "-pyy/10000"
 variable p4 equal "-pzz/10000"
-fix def1 all print 10 "${p1} ${p2} ${p3} ${p4}" file comp_100.def1.txt screen no
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4}" file comp_100.def1.txt screen no
 
 # Display thermo
-thermo          10
+thermo          100
 thermo_style    custom step v_strain temp v_p2 v_p3 v_p4 ke pe press
 thermo_modify   norm no flush yes
 
