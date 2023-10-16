@@ -139,6 +139,7 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
 - I compared the results.tag of dftb+ and the results of lammps and corrected it to "forces[i3+j]=-gradients[i *3+j]*funitconv;". We are looking for active opinions from our readers.
 - In my current modified version, "virial" was not working properly, so it turned out that the second term of the pressure in "lammps" was not calculated correctly.
+- The second term of Lampps pressure is changed in "virial" of "fix_dftp.cpp". The original DFTBP is used as a reference, but the comments in dftbplus.h indicate that both the DFTB+ formula is Pascal, which I am not satisfied with. I would like to get information from many people regarding this as well.
 
 
 ## PC specs used for test ######################################
