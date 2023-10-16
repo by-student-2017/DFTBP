@@ -6,6 +6,7 @@
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04.1 LTS (WLS2, Windows11)
 - Note 1: "mpirun -np 1" and OpenMP version
+- Note 2: As is well known, slater koster file is faster to calculate than xTB. It is also difficult to optimize the structure of xTB under periodic boundary conditions for metallic systems. I really hope someone comes along and makes a free version of the slater koster file.
 
 
 ## Step 1. Preparing DFTB+ ######################################
