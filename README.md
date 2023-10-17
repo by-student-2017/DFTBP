@@ -78,6 +78,20 @@ make package-status
 make mpi
 ```
 
+
+## Example (graphene) ######################################
+  1. go to examples directory
+```
+cd /mnt/d/lammps-29Oct20/examples/DFTBP/graphene
+```
+  2. run
+```
+export OMP_NUM_THREADS=4
+mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. open equil.xyz on Ovito code
+
+
 ## Example (graphene, stress-strain, test version) ######################################
   1. go to examples directory
 ```

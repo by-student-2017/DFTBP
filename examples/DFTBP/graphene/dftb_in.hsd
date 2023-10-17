@@ -56,7 +56,7 @@ Hamiltonian = DFTB {
   ForceEvaluation = "Traditional"
 }
 Options = {
-  WriteAutotestTag = No
+  WriteAutotestTag = Yes
   WriteDetailedOut = No
   WriteDetailedXML = No
   WriteResultsTag = No
