@@ -89,7 +89,7 @@ cd ./lammps-29Oct20/examples/DFTBP/graphene
 ```
   2. run
 ```
-export OMP_NUM_THREADS=16
+export OMP_NUM_THREADS=1
 $HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. open equil.xyz on Ovito code
@@ -103,7 +103,7 @@ cd ./lammps-29Oct20/examples/DFTBP/graphene_stress-strain
 ```
   2. run
 ```
-export OMP_NUM_THREADS=16
+export OMP_NUM_THREADS=1
 $HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. ./plot_stress_vs_strain_v2.gpl
@@ -119,7 +119,7 @@ cd ./lammps-29Oct20/examples/DFTBP/N_in_graphene
 ```
   2. run
 ```
-export OMP_NUM_THREADS=16
+export OMP_NUM_THREADS=1
 $HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. open equil.xyz on Ovito code
