@@ -51,10 +51,12 @@ cmake --install _build
 ```
   5. Environment settings
 ```
+echo '# DFTB+ v.23.1 environment settings' >> ~/.bashrc
 echo 'export PATH=$PATH:$HOME/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:$HOME/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
 echo 'export PATH=$PATH:$HOME/dftbplus-23.1/dftb+/include' >> ~/.bashrc
 echo 'export PATH=$PATH:$HOME/dftbplus-23.1/tools/misc' >> ~/.bashrc
+echo '# DFTBP environment settings' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
 bash
 ```
@@ -193,10 +195,12 @@ cmake --install _build
 ```
   5. Environment settings
 ```
+echo '# DFTB+ v.23.1 environment settings' >> ~/.bashrc
 echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
 echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/include' >> ~/.bashrc
 echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/tools/misc' >> ~/.bashrc
+echo '# DFTBP environment settings' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
 bash
 ```
