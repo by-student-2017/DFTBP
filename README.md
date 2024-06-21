@@ -133,9 +133,8 @@ cd ./lammps-29Oct20/examples/DFTBP/PbTiO3_MSD
 ```
   2. run
 ```
-ulimit -s unlimited
 export OMP_NUM_THREADS=16
-$HOME/lammps-29Oct20/src/lmp_serial -in md.in
+$HOME/lammps-29Oct20/src/lmp_serial -sf omp -pk omp 16 -in md.in
 ```
   3. ./plot_msd_O.gpl
 
