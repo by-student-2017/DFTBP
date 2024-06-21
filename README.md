@@ -159,7 +159,7 @@ cmake --build . --parallel
 ```
 
 
-## Ovito environment settings (manual ver.3.10.6) ######################################
+## Ovito environment settings ######################################
 ```
 cd ~
 echo '# Ovito environment settings' >> ~/.bashrc
