@@ -72,7 +72,9 @@ protected:
   double const funitconv=1.0/0.194469064593167E-01;
   double const eunitconv=1.0/0.367493245336341E-01;
   double const lunitconv=0.188972598857892E+01;
-  double *gradients, *gradients_total, *gross_charges, *gross_charges_total;
+  double *gradients, *gradients_total;
+  double *gross_charges, *gross_charges_total;
+  //double *cm5_charges, cm5_charges_total;
   double *latvecs;
   double *fcoords;
   double *fstress;

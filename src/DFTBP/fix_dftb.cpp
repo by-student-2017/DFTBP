@@ -88,6 +88,7 @@ FixDFTBP::FixDFTBP(LAMMPS *lmp, int narg, char **arg) :
   fstress =NULL;
   qpotential = NULL;
   fdftbp = NULL;
+  gross_charges = NULL;
   
   if (strcmp(arg[3],"NULL") == 0) {
     error->all(FLERR,"Fix dftbp requires dftb_in.hsd file and SK files");
@@ -128,6 +129,7 @@ FixDFTBP::FixDFTBP(LAMMPS *lmp, int narg, char **arg) :
   fstress=new double[3*3];
   gradients = new double[3*nAtoms];
   fcoords = new double[3*nAtoms];
+  //gross_charges = new double[nAtoms];
   
   //std::cout<<"DFTB Debug: FixDFTB constructor called: "<<std::endl;  
   
@@ -149,6 +151,7 @@ FixDFTBP::~FixDFTBP()
   delete [] fstress;
   delete [] fcoords;
   delete [] gradients;
+  //delete [] gross_charges;
   //free(fcoords);
   //free(gradients);
   
@@ -176,14 +179,14 @@ int FixDFTBP::setmask()
 void FixDFTBP::init()
 {
   // error checks
-
+/*
   if (domain->dimension == 2)
     error->all(FLERR,"Fix dftbp requires 3d problem");
 
   if (coulomb) {
     if (atom->q_flag == 0 || force->pair == NULL || force->kspace == NULL)
       error->all(FLERR,"Fix dftbp cannot compute Coulomb potential");
-
+  
     int ipe = modify->find_compute(id_pe);
     if (ipe < 0) error->all(FLERR,"Could not find fix dftbp compute ID");
     c_pe = modify->compute[ipe];
@@ -195,7 +198,7 @@ void FixDFTBP::init()
   else if (!domain->xperiodic && !domain->yperiodic && !domain->zperiodic)
     pbcflag = 0;
   else error->all(FLERR,"Fix dftbp requires 3d simulation");
-
+*/
   // create fdftbp charges if needed 
   
   // for now, assume nlocal will never change
@@ -303,9 +306,10 @@ void FixDFTBP::post_force(int vflag){
   double *boxlo = domain->boxlo;
   double *boxhi = domain->boxhi;
   double *forces;
-  bool dftbperror = 0;
   //if (coulomb) forces = &fdftbp[0][0];
   forces = &atom->f[0][0];
+  double *q = atom->q;
+  bool dftbperror = 0;
   int maxiter = -1;
   
   latvecs[0]=(boxhi[0]-boxlo[0])*lunitconv;
@@ -391,6 +395,24 @@ void FixDFTBP::post_force(int vflag){
     virial[5]=0.5*(fstress[5]+fstress[7])*sunitconv*volume;
     //}
     //std::cout<<"DFTB Debug: check point after virial set: "<<std::endl;
+
+/*  
+  // uncomment gross or cm5 charge
+  dftbp_get_gross_charges(dftbplus,gross_charges);
+  //dftbp_get_cm5_charges(dftbplus,cm5_charges);
+
+  for (int i=0;i<nAtoms;i++){
+    q[i] = gross_charges[i];
+    gross_charges_total[i] += q[i];
+    //q[i] = cm5_charges[i];
+    //cm5_charges_total[i] += q[i];
+  }
+*/
+  dftbp_get_gross_charges(dftbplus,q);
+  //dftbp_get_cm5_charges(dftbplus,q); // WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+
+  //std::cout<<"DFTB Debug: check point after charge set: "<<std::endl;
+
   return;
 }
 
