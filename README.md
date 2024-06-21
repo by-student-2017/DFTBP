@@ -143,7 +143,7 @@ mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
   
 
 
-## Ovito [manual](https://www.ovito.org/manual/development/build_linux.html) ######################################
+## Ovito installation [manual](https://www.ovito.org/manual/development/build_linux.html) ######################################
 ```
 cd $HOME
 sudo apt -y install build-essential git cmake-curses-gui qt6-base-dev libqt6svg6-dev \
