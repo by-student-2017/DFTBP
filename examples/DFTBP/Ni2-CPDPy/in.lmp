@@ -8,7 +8,7 @@ atom_style      full
 boundary        p p p   # periodic boundary condition
 atom_modify     sort 0 0.0 # turn off sorting of the coordinates
 #-----------------------------------------------------------------------------------------
-variable Tini equal 273-196.0 # [K] (Initial temperature)
+variable Tini equal 273+0.0 # [K] (Initial temperature)
 variable Tfin equal 273+320.0 # [K] (Annealing temperature), other condition: 873 K, 973 K
 
 variable Nout equal 10 # every 10 time steps to the specified file
@@ -43,7 +43,7 @@ unfix		emin
 #reset timer
 reset_timestep 0
 
-variable	dt equal 0.001 # 1.0 [fs] (Recommend 0.1-0.5 [fs]), sets the timestep for subsequent simulations
+variable	dt equal 0.001 # 1.0 [fs] (Recommend 0.1-1.0 [fs]), sets the timestep for subsequent simulations
 timestep        ${dt}
 
 thermo ${Nout}   # computes and prints thermodynamic 
@@ -64,7 +64,7 @@ dump_modify     d1 element ${elem}
 #fix therm   all langevin  10.0 10.0  0.1 699483
 
 # Equilibrium system, calculation settings
-fix f1 all npt temp ${Tini} ${Tfin} $(100*dt) aniso 1.0 1.0 $(1000*dt) # temp and pressure conserved
+fix f1 all npt temp ${Tini} ${Tfin} $(10*dt) aniso 1.0 1.0 $(100*dt) # temp and pressure conserved
 
 run             4000 # 4.0 [ps]
 
@@ -79,8 +79,8 @@ dump_modify     d2 element ${elem}
 #----------------------------------------------------------------------
 
 #-------------------- Run the simulation -------------------------------------------------
-fix f2 all npt temp ${Tfin} ${Tfin} $(100*dt) aniso 1.0 1.0 $(1000*dt) # temp conserved
-#fix f2 all nvt temp ${Tfin} ${Tfin} $(100*dt)
+fix f2 all npt temp ${Tfin} ${Tfin} $(10*dt) aniso 1.0 1.0 $(100*dt) # temp conserved
+#fix f2 all nvt temp ${Tfin} ${Tfin} $(10*dt)
 
 run            10000 # 10.0 [ps]
 

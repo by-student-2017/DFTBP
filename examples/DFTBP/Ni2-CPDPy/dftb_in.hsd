@@ -2,17 +2,19 @@ Geometry = VaspFormat {
  <<< POSCAR
 }
 Driver = {}
-Hamiltonian = xTB {
-  Method = "GFN1-xTB"
-  SCC = Yes
-  SCCTolerance = 1.0E-4
-  MaxSCCIterations = 1000
-  Mixer = Broyden {
-    MixingParameter = 0.20
-    InverseJacobiWeight = 1.0E-2
-    MinimalWeight = 1.0
-    MaximalWeight = 100000.0
-    WeightFactor = 1.0E-2
+Hamiltonian = DFTB {
+  Scc = Yes
+  SccTolerance = 1e-4
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = "./mio-1-1+trans3d-0-1/"
+    Separator = "-"
+    Suffix = ".skf"
+  }
+  MaxAngularMomentum {
+    Ni = "d"
+     N = "p"
+     C = "p"
+     H = "s"
   }
   KPointsAndWeights = SuperCellFolding {
 3 0 0
