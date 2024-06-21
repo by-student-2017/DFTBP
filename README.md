@@ -140,6 +140,34 @@ mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
   3. ./plot_msd_O.gpl
 
   4. open equil.xyz (in cfg directory) on Ovito code
+  
+
+
+## Ovito [manual](https://www.ovito.org/manual/development/build_linux.html) ######################################
+```
+cd $HOME
+sudo apt -y install build-essential git cmake-curses-gui qt6-base-dev libqt6svg6-dev \
+      libboost-dev libavcodec-dev libavdevice-dev libavfilter-dev libavformat-dev \
+      libavutil-dev libswscale-dev libnetcdf-dev libhdf5-dev libhdf5-serial-dev \
+      libglu1-mesa-dev libvulkan-dev ninja-build \
+      libssh-dev python3-sphinx python3-sphinx-rtd-theme
+git clone --recursive https://gitlab.com/stuko/ovito.git
+cd ovito
+mkdir build
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . --parallel
+```
+
+
+## Ovito environment settings (manual ver.3.10.6) ######################################
+```
+cd ~
+echo '# Ovito environment settings' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/ovito/build/bin' >> ~/.bashrc
+bash
+which ovito
+ovito
+```
 
 
 ## PC specs used for test ######################################
