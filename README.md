@@ -5,7 +5,7 @@
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
   + Ubuntu 22.04 LTS or Ubuntu 22.04.1 LTS (on WLS2 (Windows11))
-- Note 1: "mpirun -np 1" and OpenMP version
+- Note 1: OpenMP version or "mpirun -np 1"
 - Note 2: As is well known, slater koster files are faster to compute than xTB. Structural optimization using xTB under periodic boundary conditions in metallic systems is also difficult. I really wish someone would create a free version of the slater koster files for most of the elements in the periodic table.
 
 
@@ -75,9 +75,9 @@ cp -r ./DFTBP/* ./lammps-29Oct20/
   6. Compiling Lammps with DFTBP code
 ```
 cd lammps-29Oct20/src
-make yes-dftbp yes-MOLECULE
+make yes-dftbp yes-MOLECULE yes-USER-OMP
 make package-status
-make mpi
+make serial
 ```
 
 
@@ -90,7 +90,7 @@ cd ./lammps-29Oct20/examples/DFTBP/graphene
   2. run
 ```
 export OMP_NUM_THREADS=16
-mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+$HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. open equil.xyz on Ovito code
 
@@ -104,7 +104,7 @@ cd ./lammps-29Oct20/examples/DFTBP/graphene_stress-strain
   2. run
 ```
 export OMP_NUM_THREADS=16
-mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+$HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. ./plot_stress_vs_strain_v2.gpl
 
@@ -120,7 +120,7 @@ cd ./lammps-29Oct20/examples/DFTBP/N_in_graphene
   2. run
 ```
 export OMP_NUM_THREADS=16
-mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+$HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. open equil.xyz on Ovito code
 
@@ -135,12 +135,24 @@ cd ./lammps-29Oct20/examples/DFTBP/PbTiO3_MSD
 ```
 ulimit -s unlimited
 export OMP_NUM_THREADS=16
-mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+$HOME/lammps-29Oct20/src/lmp_serial -in md.in
 ```
   3. ./plot_msd_O.gpl
 
   4. open equil.xyz (in cfg directory) on Ovito code
-  
+
+
+## Example (Ni2-CPDPy, GFN1-xTB, test version) ######################################
+  1. go to examples directory
+```
+cd $HOME
+cd ./lammps-29Oct20/examples/DFTBP/Ni2-CPDPy
+```
+  2. run
+```
+bash run.sh
+```
+  3. open run.*.cfg (in cfg directory) on Ovito code
 
 
 ## Ovito installation [manual](https://www.ovito.org/manual/development/build_linux.html) ######################################
