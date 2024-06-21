@@ -142,7 +142,7 @@ $HOME/lammps-29Oct20/src/lmp_serial -in md.in
   4. open equil.xyz (in cfg directory) on Ovito code
 
 
-## Example (Ni2-CPDPy, GFN1-xTB, test version) ######################################
+## Example (Ni2-CPDPy, GFN1-xTB, simple-DFT-D3 version) ######################################
   1. go to examples directory
 ```
 cd $HOME
