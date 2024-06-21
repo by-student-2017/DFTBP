@@ -141,7 +141,7 @@ $HOME/lammps-29Oct20/src/lmp_serial -sf omp -pk omp 16 -in md.in
   4. open equil.xyz (in cfg directory) on Ovito code
 
 
-## Example (Ni2-CPDPy, GFN1-xTB, simple-DFT-D3, OpenMP version) ######################################
+## Example (Ni2-CPDPy, GFN1-xTB, simple-dftd3, OpenMP version) ######################################
   1. go to examples directory
 ```
 cd $HOME
