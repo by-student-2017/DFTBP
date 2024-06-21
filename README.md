@@ -51,11 +51,11 @@ cmake --install _build
 ```
   5. Environment settings
 ```
-echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
-echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
-echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/include' >> ~/.bashrc
-echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/tools/misc' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/dftbplus-23.1/dftb+/include' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/dftbplus-23.1/tools/misc' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
 bash
 ```
 - Note: If a different version is set, you need to rewrite the above environment (only the version number needs to be modified) in "vim ~/.bashrc" before starting installation and compilation.
