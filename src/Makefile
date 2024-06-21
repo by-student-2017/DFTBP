@@ -14,8 +14,8 @@ SHLIB =  liblammps_$@.so
 ARLINK = liblammps.a
 SHLINK = liblammps.so
 TMPNAME= tmp_$@_name
-LMPLINK= -L. -llammps_$@ -Wl,-rpath=$(HOME)/dftbplus-23.1/dftb+/lib" -L$(HOME)/dftbplus-23.1/dftb+/lib" -ldftbplus
-#LMPLINK= -L. -llammps_$@ -Wl,-rpath=$$HOME/dftbplus-23.1/dftb+/lib" -L$$HOME/dftbplus-23.1/dftb+/lib" -ldftbplus
+LMPLINK= -L. -llammps_$@ -Wl,-rpath=$(HOME)/dftbplus-23.1/dftb+/lib -L$(HOME)/dftbplus-23.1/dftb+/lib -ldftbplus
+#LMPLINK= -L. -llammps_$@ -Wl,-rpath=$$HOME/dftbplus-23.1/dftb+/lib -L$$HOME/dftbplus-23.1/dftb+/lib -ldftbplus
 
 OBJDIR =   Obj_$@
 OBJSHDIR = Obj_shared_$@

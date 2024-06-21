@@ -2,6 +2,7 @@
 
 # GNU Fortran settings for use with bundled linalg lib
 
-dftbp_SYSINC = /mnt/d/mnt/d/dftbplus-23.1/dftb+/include
-dftbp_SYSLIB = -Wl,-rpath=/mnt/d/dftbplus-23.1/dftb+/lib -L/mnt/d/dftbplus-23.1/dftb+/lib -ldftbplus #../../lib/latte/filelink.o -llatte -llinalg -lgfortran
+dftbp_SYSINC = $(HOME)/dftbplus-23.1/dftb+/include
+dftbp_SYSLIB = -Wl,-rpath=$(HOME)/dftbplus-23.1/dftb+/lib -L$(HOME)/dftbplus-23.1/dftb+/lib -ldftbplus #../../lib/latte/filelink.o -llatte -llinalg -lgfortran
+#dftbp_SYSLIB = -Wl,-rpath=$$HOME/dftbplus-23.1/dftb+/lib -L$$HOME/dftbplus-23.1/dftb+/lib -ldftbplus #../../lib/latte/filelink.o -llatte -llinalg -lgfortran
 dftbp_SYSPATH =# -L../../lib/linalg -fopenmp
