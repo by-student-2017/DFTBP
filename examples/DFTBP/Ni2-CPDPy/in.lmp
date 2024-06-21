@@ -8,7 +8,7 @@ atom_style      full
 boundary        p p p   # periodic boundary condition
 atom_modify     sort 0 0.0 # turn off sorting of the coordinates
 #-----------------------------------------------------------------------------------------
-variable Tini equal 273+0.0 # [K] (Initial temperature)
+variable Tini equal 273-40.0 # [K] (Initial temperature)
 variable Tfin equal 273+320.0 # [K] (Annealing temperature), other condition: 873 K, 973 K
 
 variable Nout equal 10 # every 10 time steps to the specified file
