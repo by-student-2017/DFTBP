@@ -311,6 +311,16 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   4. open equil.xyz (in cfg directory) on Ovito code
 
 
+## PC specs used for test ######################################
++ OS: Microsoft Windows 11 Home 64 bit
++ BIOS: 1.14.0
++ CPU： 12th Gen Intel(R) Core(TM) i7-12700
++ Base Board：0R6PCT (A01)
++ Memory：32 GB
++ GPU: NVIDIA GeForce RTX3070
++ WSL2: VERSION="22.04.1 LTS (Jammy Jellyfish)"
+
+
 ## Note (for fix_dftb.h, etc) ######################################
 - ERROR messages:
   + Must use units metal with fix dftbp command
@@ -343,16 +353,6 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
 - error with conserved quantity when using fix external pf/callback and fix NPT or MSST: https://matsci.org/t/error-with-conserved-quantity-when-using-fix-external-pf-callback-and-fix-npt-or-msst/26646
 - Usually, the volume V is calculated using "V=det|A|". However, in a triangular matrix, it can be calculated by the product of diagonal components, that is, "V=Tr[A]". This code calculates the volume using "V=Tr[A]". On VESTA, coordinate axes are output as a triangular matrix in POSCAR format even for FCC primitives, and in lammps they are often treated as orthorombic, so this volume problem is less likely to occur. This is done to reduce the number of calculations, but if the volume is incorrect, use "fix_dftb.cpp" to correct the "latvecs" arrays and "volume". I also accept requests for corrections. In that case, please let me know the specific method to fix it.
 - I'm thinking about MOPAC + Lammps, but I can't do it because MOPAC's API is not official and well-developed. I also want you to actively work on this.
-
-
-## PC specs used for test ######################################
-+ OS: Microsoft Windows 11 Home 64 bit
-+ BIOS: 1.14.0
-+ CPU： 12th Gen Intel(R) Core(TM) i7-12700
-+ Base Board：0R6PCT (A01)
-+ Memory：32 GB
-+ GPU: NVIDIA GeForce RTX3070
-+ WSL2: VERSION="22.04.1 LTS (Jammy Jellyfish)"
 
 
 ## References ######################################
