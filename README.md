@@ -9,7 +9,149 @@
 - Note 2: As is well known, slater koster files are faster to compute than xTB. Structural optimization using xTB under periodic boundary conditions in metallic systems is also difficult. I really wish someone would create a free version of the slater koster files for most of the elements in the periodic table.
 
 
-## Step 1. Preparing DFTB+ ######################################
+## Step 1. Preparing DFTB+ (Ubuntu 22.04 LTS) ######################################
+  1. Install libraries, e.g.
+```
+sudo apt update
+sudo apt -y install gfortran g++ build-essential
+sudo apt -y install libopenmpi-dev libscalapack-openmpi-dev
+sudo apt -y install libopenblas-dev
+sudo apt -y install make cmake
+sudo apt -y install python3-numpy python-is-python3
+```
+  2. Install DFTB+ v.23.1 and related libraries
+```
+cd $HOME
+wget https://github.com/dftbplus/dftbplus/releases/download/23.1/dftbplus-23.1.tar.xz
+tar xvf dftbplus-23.1.tar.xz
+cd dftbplus-23.1
+./utils/get_opt_externals ALL
+```
+  3. vim config.cmake
+```
+option(WITH_OMP "Whether OpenMP thread parallisation should be enabled" TRUE)
+option(WITH_MPI "Whether DFTB+ should support MPI-parallelism" FALSE)
+option(WITH_TBLITE "Whether xTB support should be included via tblite." TRUE)
+option(WITH_SDFTD3 "Whether the s-dftd3 library should be included" TRUE)
+option(WITH_API "Whether public API should be included and the DFTB+ library installed" TRUE)
+option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" TRUE)
+```
+
+```
+
+```
+  4. Compiling DFTB+ v23.1
+```
+mkdir _build
+FC=gfortran CC=gcc cmake -DLAPACK_LIBRARY="-L/usr/lib/x86_64-linux-gnu -lopenblas -lpthread" -DCMAKE_INSTALL_PREFIX="$HOME/dftbplus-23.1/dftb+" -B _build ./
+cmake --build _build -- -j
+cmake -B _build -DTEST_OMP_THREADS=4 ./
+pushd _build; ctest; popd
+cmake --install _build
+```
+  5. Environment settings
+```
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/include' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/tools/misc' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
+bash
+```
+- Note: If a different version is set, you need to rewrite the above environment (only the version number needs to be modified) in "vim ~/.bashrc" before starting installation and compilation.
+
+
+## Step 2. Preparing DFTBP and Lammps ######################################
+  6. Install DFTBP and Lammps code
+```
+cd $HOME
+wget https://download.lammps.org/tars/lammps-29Oct2020.tar.gz
+tar zxvf lammps-29Oct2020.tar.gz
+git clone https://github.com/by-student-2017/DFTBP.git
+cp -r ./DFTBP/* ./lammps-29Oct20/
+```
+  6. Compiling Lammps with DFTBP code
+```
+cd lammps-29Oct20/src
+make yes-dftbp yes-MOLECULE
+make package-status
+make mpi
+```
+
+
+## Example (graphene) ######################################
+  1. go to examples directory
+```
+cd $HOME
+cd ./lammps-29Oct20/examples/DFTBP/graphene
+```
+  2. run
+```
+export OMP_NUM_THREADS=4
+mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. open equil.xyz on Ovito code
+
+
+## Example (graphene, stress-strain, test version) ######################################
+  1. go to examples directory
+```
+cd $HOME
+cd ./lammps-29Oct20/examples/DFTBP/graphene_stress-strain
+```
+  2. run
+```
+export OMP_NUM_THREADS=4
+mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. ./plot_stress_vs_strain_v2.gpl
+
+  4. open *.cfg (in cfg directory) on Ovito code
+
+
+## Example (N in graphene, GFN2-xTB, test version) ######################################
+  1. go to examples directory
+```
+cd $HOME
+cd ./lammps-29Oct20/examples/DFTBP/N_in_graphene
+```
+  2. run
+```
+export OMP_NUM_THREADS=4
+mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. open equil.xyz on Ovito code
+
+
+## Example (PbTiO3, MSD, GFN1-xTB, test version) ######################################
+  1. go to examples directory
+```
+cd $HOME
+cd ./lammps-29Oct20/examples/DFTBP/PbTiO3_MSD
+```
+  2. run
+```
+ulimit -s unlimited
+export OMP_NUM_THREADS=8
+mpirun -quiet -np 1 $HOME/lammps-29Oct20/src/lmp_mpi -in md.in
+```
+  3. ./plot_msd_O.gpl
+
+  4. open equil.xyz (in cfg directory) on Ovito code
+
+
+## PC specs used for test ######################################
++ Type: HA-R97900AS1N1TTNVM
++ OS: ubuntu 22.04 LTS
++ CPU： AMD Ryzen 9 7950X
++ Base Board：ASRock X670E Steel Legend < AMD X670 Chipset >
++ Memory：128 GB (DDR5-5600)
++ GPU: NVIDIA GeForce GT 1030
++ Cost: Approximately 320,000 yen
++ Computer case: Antec P101 Silent
+
+
+## Step 1. Preparing DFTB+ (Ubuntu 22.04.1 LTS on WLS2(Windows11) and D drive (=/mnt/d) version) ######################################
   1. Install libraries, e.g.
 ```
 sudo apt update
@@ -68,6 +210,7 @@ cd /mnt/d
 wget https://download.lammps.org/tars/lammps-29Oct2020.tar.gz
 tar zxvf lammps-29Oct2020.tar.gz
 git clone https://github.com/by-student-2017/DFTBP.git
+cp ./DFTBP/src/Makefile_mnt_d_version ./DFTBP/src/Makefile
 cp -r ./DFTBP/* ./lammps-29Oct20/
 ```
   6. Compiling Lammps with DFTBP code
