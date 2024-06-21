@@ -11,7 +11,7 @@ atom_modify     sort 0 0.0 # turn off sorting of the coordinates
 variable Tini equal 300.0 # [K] (Initial temperature)
 variable Tfin equal 593.0 # [K] (Annealing temperature), other condition: 873 K, 973 K
 
-variable Nout equal 1 # every 1 time steps to the specified file
+variable Nout equal 10 # every 10 time steps to the specified file
 
 #-------------------- Atom & Lattice description ----------------------------------------
 read_data       data.lammps
@@ -43,7 +43,7 @@ unfix		emin
 #reset timer
 reset_timestep 0
 
-variable	dt equal 0.0005 # 0.5 [fs] (Recommend 0.1-0.5 [fs]), sets the timestep for subsequent simulations
+variable	dt equal 0.001 # 1.0 [fs] (Recommend 0.1-0.5 [fs]), sets the timestep for subsequent simulations
 timestep        ${dt}
 
 thermo ${Nout}   # computes and prints thermodynamic 
@@ -64,9 +64,9 @@ dump_modify     d1 element ${elem}
 #fix therm   all langevin  10.0 10.0  0.1 699483
 
 # Equilibrium system, calculation settings
-fix f1 all npt temp ${Tini} ${Tfin} $(100*dt) iso 1.0 1.0 $(1000*dt) # temp and pressure conserved
+fix f1 all npt temp ${Tini} ${Tfin} $(100*dt) aniso 1.0 1.0 $(1000*dt) # temp and pressure conserved
 
-run             800 # 0.4 [ps]
+run             2000 # 2.0 [ps]
 
 unfix  f1 # deletes the previously defined fix 1
 undump d1 # deletes the previously defined dump 1
@@ -79,9 +79,9 @@ dump_modify     d2 element ${elem}
 #----------------------------------------------------------------------
 
 #-------------------- Run the simulation -------------------------------------------------
-fix f2 all npt temp ${Tfin} ${Tfin} $(100*dt) iso 1.0 1.0 $(1000*dt) # temp conserved
+fix f2 all npt temp ${Tfin} ${Tfin} $(100*dt) aniso 1.0 1.0 $(1000*dt) # temp conserved
 #fix f2 all nvt temp ${Tfin} ${Tfin} $(100*dt)
 
-run             4000 # 2 [ps]
+run             8000 # 8 [ps]
 
 #-------------------- End ----------------------------------------------------------------

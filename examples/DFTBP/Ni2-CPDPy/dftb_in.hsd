@@ -1,5 +1,5 @@
 Geometry = VaspFormat {
- <<<data.vasp
+ <<< POSCAR
 }
 Driver = {}
 Hamiltonian = xTB {
@@ -15,13 +15,13 @@ Hamiltonian = xTB {
     WeightFactor = 1.0E-2
   }
   KPointsAndWeights = SuperCellFolding {
-2 0 0
-0 1 0
-0 0 2
+3 0 0
+0 2 0
+0 0 3
 0.0 0.0 0.0
   }
   Differentiation = FiniteDiff {
-    Delta = 1.000000000000000E-002
+    Delta = 1.0E-2
   }
   #PolynomialRepulsive = {}
   ShellResolvedSCC = No
@@ -29,14 +29,15 @@ Hamiltonian = xTB {
   #RangeSeparated = None {}
   ReadInitialCharges = No
   InitialCharges = {}
-  EwaldParameter = 0.00000000000000
-  EwaldTolerance = 1.000000000000000E-009
+  EwaldParameter = 0.0
+  EwaldTolerance = 1.0E-9
   #HCorrection = None {}
   SpinPolarisation = {}
   ElectricField = {}
   Solver = RelativelyRobust {}
-  Charge = 0.00000000000000
+  Charge = 0.0
   #OnSiteCorrection = {}
+  #
   #Dispersion = TS {
   #  Damping = 20.0
   #  RangeSeparation = 0.94
@@ -48,6 +49,7 @@ Hamiltonian = xTB {
     s6 = 1.0
     s8 = 0.5883
   }
+  #
   Solvation = {}
   #ThirdOrder = No
   #ThirdOrderFull = No
@@ -68,7 +70,7 @@ Options = {
   WriteChargesAsText = No
 }
 ParserOptions = {
-  ParserVersion = 8
+  ParserVersion = 13
   WriteHSDInput = Yes
   #WriteXMLInput = No
   StopAfterParsing = No
