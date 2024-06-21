@@ -45,7 +45,7 @@ option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" TRUE)
 mkdir _build
 FC=gfortran CC=gcc cmake -DLAPACK_LIBRARY="-L/usr/lib/x86_64-linux-gnu -lopenblas -lpthread" -DCMAKE_INSTALL_PREFIX="$HOME/dftbplus-23.1/dftb+" -B _build ./
 cmake --build _build -- -j
-cmake -B _build -DTEST_OMP_THREADS=4 ./
+cmake -B _build -DTEST_OMP_THREADS=16 ./
 pushd _build; ctest; popd
 cmake --install _build
 ```
