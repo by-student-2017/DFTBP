@@ -4,7 +4,7 @@
   + DFTB+ v.23.1 
     + [(v.21.2 or v.22.2 for "graphene" in examples)](https://dftbplus.org/download/deprecated)
   + [lammps-29Oct2020](https://download.lammps.org/tars/lammps-29Oct2020.tar.gz) [(a relative link)](https://download.lammps.org/tars/index.html)
-  + Ubuntu 22.04 LTS or Ubuntu 22.04.1 LTS (on WLS2(Windows11))
+  + Ubuntu 22.04 LTS or Ubuntu 22.04.1 LTS (on WLS2 (Windows11))
 - Note 1: "mpirun -np 1" and OpenMP version
 - Note 2: As is well known, slater koster files are faster to compute than xTB. Structural optimization using xTB under periodic boundary conditions in metallic systems is also difficult. I really wish someone would create a free version of the slater koster files for most of the elements in the periodic table.
 
@@ -181,7 +181,7 @@ ovito
 + Computer case: Antec P101 Silent
 
 
-## Step 1. Preparing DFTB+ (Ubuntu 22.04.1 LTS on WLS2(Windows11) and D drive (=/mnt/d) version) ######################################
+## Step 1. Preparing DFTB+ (Ubuntu 22.04.1 LTS on WLS2 (Windows11) and D drive (=/mnt/d) version) ######################################
   1. Install libraries, e.g.
 ```
 sudo apt update
