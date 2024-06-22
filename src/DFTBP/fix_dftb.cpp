@@ -120,6 +120,13 @@ FixDFTBP::FixDFTBP(LAMMPS *lmp, int narg, char **arg) :
   char outfilename[]="output";
   //Initializes a DFTB+ calculator
   dftbp_init(dftbplus,outfilename);
+/*
+  int lammps_mpi_comm
+  lammps_mpi_comm = lammps_get_mpi_comm();
+  int dftb_mpi_comm;
+  dftb_mpi_comm = mpi_comm_c2f(lammps_mpi_comm);
+  dftbp_init_mpi(dftbplus,outfilename,dftb_mpi_comm);
+*/
   //Fills up a DFTB+ input tree from a HSD input file
   dftbp_get_input_from_file(dftbplus,infilename,inputs);
   dftbp_process_input(dftbplus,inputs);
@@ -356,6 +363,14 @@ void FixDFTBP::post_force(int vflag){
   dftbp_set_coords_and_lattice_vecs(dftbplus,fcoords,latvecs);  
 
   //std::cout<<"DFTB Debug: check point after coordinate set: "<<std::endl;  
+
+/*
+  // QM/MM, extpot[i] = sum(-q[j]/(4*PI()*r[i][j])), extpotgrad[i] = sum(q[j]/(4*PI()*r[i][j]*r[i][j]))
+  dftbp_set_external_potential(dftbplus, const double *extpot, const double *extpotgrad);
+*/
+
+  //std::cout<<"DFTB Debug: check point after external_potential set: "<<std::endl;  
+
 
   //energy update only eflag>1
   if(eflag){
