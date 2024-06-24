@@ -64,7 +64,8 @@ dump_modify     d1 element ${elem}
 #fix therm   all langevin  10.0 10.0  0.1 699483
 
 # Equilibrium system, calculation settings
-fix f1 all npt temp ${Tini} ${Tfin} $(10*dt) aniso 0.0 1.0 $(100*dt) # temp and pressure conserved
+#fix f1 all nvt temp ${Tfin} ${Tfin} $(100*dt) # temperature conserved
+fix f1 all npt temp ${Tini} ${Tfin} $(10*dt) aniso 0.0 1.0 $(100*dt) # temperature amd pressure conserved
 
 run             4000 # 0.4 [ps]
 
@@ -79,8 +80,8 @@ dump_modify     d2 element ${elem}
 #----------------------------------------------------------------------
 
 #-------------------- Run the simulation -------------------------------------------------
-fix f2 all npt temp ${Tfin} ${Tfin} $(100*dt) aniso 1.0 1.0 $(1000*dt) # temp conserved
-#fix f2 all nvt temp ${Tfin} ${Tfin} $(100*dt)
+#fix f2 all nvt temp ${Tfin} ${Tfin} $(100*dt) # temperature conserved
+fix f2 all npt temp ${Tfin} ${Tfin} $(100*dt) aniso 1.0 1.0 $(1000*dt) # temperature amd pressure conserved
 
 run            10000 # 1.0 [ps]
 
