@@ -36,10 +36,6 @@ option(WITH_SDFTD3 "Whether the s-dftd3 library should be included" TRUE)
 option(WITH_API "Whether public API should be included and the DFTB+ library installed" TRUE)
 option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" TRUE)
 ```
-
-```
-
-```
   4. Compiling DFTB+ v23.1
 ```
 mkdir _build
@@ -218,10 +214,6 @@ option(WITH_TBLITE "Whether xTB support should be included via tblite." TRUE)
 option(WITH_SDFTD3 "Whether the s-dftd3 library should be included" TRUE)
 option(WITH_API "Whether public API should be included and the DFTB+ library installed" TRUE)
 option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" TRUE)
-```
-
-```
-
 ```
   4. Compiling DFTB+ v23.1
 ```
