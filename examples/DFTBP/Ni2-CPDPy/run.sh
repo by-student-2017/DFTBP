@@ -1,9 +1,11 @@
 #!/bin/bash
 
+NCPU=16
+lammps_adress=$HOME/lammps-29Oct20
+
 mkdir cfg
 
-export OMP_NUM_THREADS=16
+export OMP_NUM_THREADS=${NCPU}
 
-$HOME/lammps-29Oct20/src/lmp_serial -sf omp -pk omp 16 -in in.lmp
-
+${lammps_adress}/src/lmp_serial -sf omp -pk omp ${NCPU} -in in.lmp
 

@@ -1,0 +1,91 @@
+#-------------------- Initialization -----------------------------------------------------
+clear
+echo            both    # echoes each input script command to both log file and screen
+package         omp 16  # of OpenMP threads: export OMP_NUM_THREADS=16
+#-----------------------------------------------------------------------------------------
+units           metal   # determines units of all quantities used in the input file 
+atom_style      full
+boundary        p p p   # periodic boundary condition
+atom_modify     sort 0 0.0 # turn off sorting of the coordinates
+#-----------------------------------------------------------------------------------------
+variable Tini equal 273-20.0  # [K] (Initial temperature)
+variable Tfin equal 273+320.0 # [K] (Annealing temperature), other condition: 873 K, 973 K
+
+#variable Tfin equal 273+700.0 # [K] (Annealing temperature), other condition: 873 K, 973 K
+
+variable Nout equal 10 # every 10 time steps to the specified file
+
+#-------------------- Atom & Lattice description ----------------------------------------
+read_data       data.lammps
+
+mass 4 2.00     # H => D
+
+variable elem string "Ni N C H" # specifies the potential file used
+
+#-------------------- Force field --------------------------------------------------------
+pair_style      zero 1.0
+pair_coeff	* *  
+
+neighbor        1.0 bin
+neigh_modify    every 1 delay 0 check yes
+
+fix             f0 all dftbp dftb_in.hsd NULL
+fix_modify      f0 energy yes # "energy yes" or "virial yes"
+#fix_modify      f0 virial yes # "energy yes" or "virial yes"
+
+#-------------------- Energy Minimization ------------------------------------------------
+# 0 [K], structure optimization
+#fix	        emin all box/relax x 0.0 y 0.0 z 0.0
+fix	        emin all box/relax aniso 1.0
+min_style       cg
+min_modify      dmax 0.2
+min_modify      line quadratic
+minimize        1.0e-4 1.0e-6 100 1000
+unfix		emin
+
+#-------------------- Settings -----------------------------------------------------------
+#reset timer
+reset_timestep 0
+
+variable	dt equal 0.001 # 1.0 [fs] (Recommend 0.1-0.5 [fs]), sets the timestep for subsequent simulations
+timestep        ${dt}
+
+thermo ${Nout}   # computes and prints thermodynamic
+thermo_style custom step temp vol press etotal   # specifies content of thermodynamic data to be printed in screen
+
+velocity all create ${Tini} 12345 mom yes rot no # sets the velocity of a group of atoms
+
+#-------------------- Equilibrium calculation --------------------------------------------
+
+#---------- output file settings --------------------------------------
+dump            d1 all cfg ${Nout} cfg/run.*.cfg mass type xs ys zs id type vx vy vz fx fy fz q
+dump_modify     d1 element ${elem}
+#----------------------------------------------------------------------
+
+#-------------------- Run the simulation -------------------------------------------------
+# Non-Equilibrium system, calculation settings
+#fix integ   all nve
+#fix therm   all langevin  10.0 10.0  0.1 699483
+
+# Equilibrium system, calculation settings
+fix f1 all npt temp ${Tini} ${Tfin} $(10*dt) aniso 0.0 1.0 $(100*dt) # temp and pressure conserved
+
+run             10000 # 10.0 [ps]
+
+unfix  f1 # deletes the previ4usly d1fined fix 1
+undump d1 # deletes the previously defined dump 1
+#-------------------- Annealing calculation ----------------------------------------------
+reset_timestep 0
+
+#---------- output file settings --------------------------------------
+dump            d2 all cfg ${Nout} cfg/${Tfin}K.run.*.cfg mass type xs ys zs id type vx vy vz fx fy fz q
+dump_modify     d2 element ${elem}
+#----------------------------------------------------------------------
+
+#-------------------- Run the simulation -------------------------------------------------
+fix f2 all npt temp ${Tfin} ${Tfin} $(10*dt) aniso 1.0 1.0 $(100*dt) # temp and pressure conserved
+#fix f2 all nvt temp ${Tfin} ${Tfin} $(10*dt)
+
+run            100000 # 100.0 [ps]
+
+#-------------------- End ----------------------------------------------------------------
