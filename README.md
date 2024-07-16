@@ -366,7 +366,7 @@ bash
 ```
 
 
-## Step 1. Preparing DFTB+ (Ubuntu 22.04.1 LTS on WLS2 (Windows11) and D drive (=/mnt/d) version) ######################################
+## Step 1. Preparing DFTB+ for GPU (Ubuntu 22.04.1 LTS on WLS2 (Windows11) and D drive (=/mnt/d) version) ######################################
   1. Install libraries, e.g.
 ```
 sudo apt update
@@ -416,6 +416,7 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >>
 bash
 ```
 - Note: If a different version is set, you need to rewrite the above environment (only the version number needs to be modified) in "vim ~/.bashrc" before starting installation and compilation.
+- Note: change "Solver = RelativelyRobust {}" to "Solver = MAGMA {}" in dftb_in.hsd file.
 
 
 ## PC specs used for test ######################################
