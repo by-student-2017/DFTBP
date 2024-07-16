@@ -1,0 +1,104 @@
+Geometry = VaspFormat {
+ <<< POSCAR
+}
+Driver = {}
+Hamiltonian = DFTB {
+  Scc = Yes
+  SccTolerance = 1e-5
+  MaxSCCIterations = 1000
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = "./mio-1-1/"
+    Separator = "-"
+    Suffix = ".skf"
+  }
+  MaxAngularMomentum {
+     H = "s"
+     C = "p"
+     N = "p"
+     O = "p"
+     S = "d"
+  }
+  KPointsAndWeights = SuperCellFolding {
+2 0 0
+0 2 0
+0 0 2
+0.0 0.0 0.0
+  }
+  Differentiation = FiniteDiff {
+    Delta = 1.0E-2
+  }
+  #PolynomialRepulsive = {}
+  ShellResolvedSCC = No
+  ReadInitialCharges = No
+  InitialCharges = {}
+  EwaldParameter = 0.0
+  EwaldTolerance = 1.0E-9
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = MAGMA {}
+  #Solver = RelativelyRobust {}
+  Charge = 0.0
+  #OnSiteCorrection = {}
+  #
+  #Dispersion = TS {
+  #  Damping = 20.0
+  #  RangeSeparation = 0.94
+  #  ReferenceSet = "TS"
+  #}
+  Dispersion = SimpleDftD3 {
+    a1 = 0.5719
+    a2 = 3.6017
+    s6 = 1.0
+    s8 = 0.5883
+  }
+  #
+  Solvation = {}
+  ForceEvaluation = "Traditional"
+  Filling = Fermi {
+    Temperature = 100.0
+    IndependentKFilling = No
+  }
+  PolynomialRepulsive = {}
+  OldSKInterpolation = No
+  ConvergentSCCOnly = Yes
+  HCorrection = None {}
+  OnSiteCorrection = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  ThirdOrderFull = No
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+}
+Options = {
+  WriteAutotestTag = No
+  WriteDetailedOut = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 0
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  WriteCharges = Yes
+}
+ParserOptions = {
+  ParserVersion = 13
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Analysis = {
+  CalculateForces = Yes
+  MullikenAnalysis = No
+  AtomResolvedEnergies = No
+}
+ExcitedState = {}
+Reks = None {}
