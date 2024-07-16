@@ -314,6 +314,58 @@ mpirun -quiet -np 1 /mnt/d/lammps-29Oct20/src/lmp_mpi -in md.in
   4. open equil.xyz (in cfg directory) on Ovito code
 
 
+## Step 0. Preparing MAGMA library for GPU (Ubuntu 22.04.1 LTS on WLS2 (Windows11) and D drive (=/mnt/d) version) ######################################
+  1. cuda-toolkit and nvcc
+```
+sudo apt -y update
+sudo apt -y install nvidia-cuda-toolkit
+nvidia-smi
+nvcc -V
+which nvcc
+```
+  2. Select Target Platform (e.g., RTX3070)
+```
+cd /mnt/d
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
+cd dftbplus-23.1
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+sudo apt update
+sudo apt -y install cuda
+sudo apt -y install nvidia-prime
+```
+  3. GPU (GUDA) Environment settings
+```
+cd /mnt/d
+echo '# GPU (GUDA) environment settings' >> ~/.bashrc
+echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+bash
+```
+  4. Installation (magma-2.8.0) (make file version)
+```
+cd /mnt/d
+wget https://icl.utk.edu/projectsfiles/magma/downloads/magma-2.8.0.tar.gz
+tar zxvf magma-2.8.0.tar.gz
+cd magma-2.8.0
+cp make.inc-examples/make.inc.openblas make.inc
+vim make.inc
+```
+  5. change "OPENBLASDIR ?= /usr/local/openblas" to "OPENBLASDIR ?= /usr/lib/x86_64-linux-gnu/openblas-pthread"
+```
+make
+make install prefix=/mnt/d/magma/2.8.0
+```
+  5. CUDA Environment settings for MAGMA
+```
+cd /mnt/d
+echo '# CUDA environment settings for MAGMA' >> ~/.bashrc
+echo 'export CUDADIR=/usr/local/cuda' >> ~/.bashrc
+echo 'export OPENBLASDIR=/usr/lib/x86_64-linux-gnu/openblas-pthread' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/mnt/d/magma/2.8.0/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+bash
+```
+
+
 ## PC specs used for test ######################################
 + OS: Microsoft Windows 11 Home 64 bit
 + BIOS: 1.14.0
