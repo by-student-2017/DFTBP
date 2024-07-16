@@ -366,6 +366,58 @@ bash
 ```
 
 
+## Step 1. Preparing DFTB+ (Ubuntu 22.04.1 LTS on WLS2 (Windows11) and D drive (=/mnt/d) version) ######################################
+  1. Install libraries, e.g.
+```
+sudo apt update
+sudo apt -y install gfortran g++ build-essential
+sudo apt -y install libopenblas-dev
+sudo apt -y install libarpack2-dev
+sudo apt -y install make cmake
+sudo apt -y install python3-numpy python3-setuptools
+```
+  2. Install DFTB+ v.23.1 and related libraries
+```
+cd /mnt/d
+wget https://github.com/dftbplus/dftbplus/releases/download/23.1/dftbplus-23.1.tar.xz
+tar xvf dftbplus-23.1.tar.xz
+cd dftbplus-23.1
+./utils/get_opt_externals ALL
+```
+  3. vim config.cmake
+```
+option(WITH_OMP "Whether OpenMP thread parallisation should be enabled" TRUE)
+option(WITH_GPU "Whether DFTB+ should support GPU-acceleration" TRUE)
+option(WITH_TBLITE "Whether xTB support should be included via tblite." TRUE)
+option(WITH_ARPACK "Whether the ARPACK library should be included (needed for TD-DFTB)" TRUE)
+option(WITH_SDFTD3 "Whether the s-dftd3 library should be included" TRUE)
+option(WITH_PYTHON "Whether the Python components of DFTB+ should be tested and installed" TRUE)
+option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" TRUE)
+```
+  4. Compiling DFTB+ v23.1
+```
+mkdir _build
+FC=gfortran CC=gcc cmake -DLAPACK_LIBRARY="-L/usr/lib/x86_64-linux-gnu/openblas-pthread -lopenblas" -DBLAS_LIBRARY="-L/usr/lib/x86_64-linux-gnu/openblas-pthread -llapack -lblas" -DMAGMA_LIBRARY="-lm -L/mnt/d/magma/2.8.0/lib -lmagma_sparse -lmagma -L/usr/local/cuda/lib64 -lcublas -lcudart -lcusparse" -DCMAKE_INSTALL_PREFIX="/mnt/d/dftbplus-23.1/dftb+" -Wno-dev -B _build ./
+cmake --build _build -- -j8
+cmake -B _build ./
+export MAGMA_NUM_GPUS=1
+pushd _build; ctest -DTEST_OMP_THREADS=8; popd
+cmake --install _build
+```
+  5. Environment settings
+```
+echo '# DFTB+ v.23.1 environment settings' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/dftb+/include' >> ~/.bashrc
+echo 'export PATH=$PATH:/mnt/d/dftbplus-23.1/tools/misc' >> ~/.bashrc
+echo '# DFTBP environment settings' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/d/dftbplus-23.1/dftb+/lib' >> ~/.bashrc
+bash
+```
+- Note: If a different version is set, you need to rewrite the above environment (only the version number needs to be modified) in "vim ~/.bashrc" before starting installation and compilation.
+
+
 ## PC specs used for test ######################################
 + OS: Microsoft Windows 11 Home 64 bit
 + BIOS: 1.14.0
