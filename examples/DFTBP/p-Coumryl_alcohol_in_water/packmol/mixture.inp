@@ -1,0 +1,19 @@
+#
+# A mixture of p-Coumryl_alcohol and water
+#
+
+tolerance 2.0
+filetype xyz
+output  mixture.xyz
+
+structure p-Coumryl_alcohol.xyz
+  number 1
+  inside box 5. 5. 5. 15. 15. 15. 
+end structure
+
+# < ( water 3.34E-2 [N/A^3] - molecule )
+structure water.xyz 
+  number 90
+  inside box 0. 0. 0. 20. 20. 20. 
+end structure
+

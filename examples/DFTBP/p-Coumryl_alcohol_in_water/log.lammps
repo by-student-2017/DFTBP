@@ -1,0 +1,123 @@
+LAMMPS (29 Oct 2020)
+package omp 0
+WARNING: OpenMP support not enabled during compilation; using 1 thread only. (../fix_omp.cpp:126)
+package omp 1
+WARNING: OpenMP support not enabled during compilation; using 1 thread only. (../fix_omp.cpp:126)
+#-------------------- Initialization -----------------------------------------------------
+clear
+package omp 0
+WARNING: OpenMP support not enabled during compilation; using 1 thread only. (../fix_omp.cpp:126)
+package omp 1
+WARNING: OpenMP support not enabled during compilation; using 1 thread only. (../fix_omp.cpp:126)
+echo            both    # echoes each input script command to both log file and screen
+package         omp 1   # of OpenMP threads: export OMP_NUM_THREADS=16
+WARNING: OpenMP support not enabled during compilation; using 1 thread only. (../fix_omp.cpp:126)
+#-----------------------------------------------------------------------------------------
+units           metal   # determines units of all quantities used in the input file
+atom_style      full
+boundary        p p p   # periodic boundary condition
+atom_modify     sort 0 0.0 # turn off sorting of the coordinates
+#-----------------------------------------------------------------------------------------
+variable Tini equal 273+25.0 # [K] (Initial temperature)
+variable Tfin equal 273+85.0 # [K] (Annealing temperature)
+
+variable Nout equal 10 # every 10 time steps to the specified file
+
+#-------------------- Atom & Lattice description ----------------------------------------
+read_data       data.lammps
+Reading data file ...
+  orthogonal box = (0.0000000 0.0000000 0.0000000) to (20.000000 20.000000 20.000000)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  291 atoms
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0.0      0.0      0.0     
+  special bond factors coul:  0.0      0.0      0.0     
+     0 = max # of 1-2 neighbors
+     0 = max # of 1-3 neighbors
+     0 = max # of 1-4 neighbors
+     1 = max # of special neighbors
+  special bonds CPU = 0.000 seconds
+  read_data CPU = 0.006 seconds
+
+variable elem string "C O H" # specifies the potential file used
+
+#-------------------- Force field --------------------------------------------------------
+pair_style      zero 1.0
+pair_coeff	* *
+
+neighbor        1.0 bin
+neigh_modify    every 1 delay 0 check yes
+
+group main  id <= 21
+21 atoms in group main
+group water id >= 22
+270 atoms in group water
+#group main  molecule 1
+#group water molecule 2
+
+fix             f0 all dftbp dftb_in.hsd NULL
+fix_modify      f0 energy yes # "energy yes" or "virial yes"
+#fix_modify      f0 virial yes # "energy yes" or "virial yes"
+
+#-------------------- Energy Minimization ------------------------------------------------
+# 0 [K], structure optimization
+#fix	        emin all box/relax x 0.0 y 0.0 z 0.0
+fix	        emin all box/relax iso 0.0
+min_style       cg
+min_modify      dmax 0.2
+min_modify      line quadratic
+minimize        1.0e-4 1.0e-6 100 1000
+No /omp style for force computation currently active
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2
+  ghost atom cutoff = 2
+  binsize = 1, bins = 20 20 20
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair zero, perpetual
+      attributes: half, newton on, omp
+      pair build: half/bin/newton/omp
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 7.088 | 7.088 | 7.088 Mbytes
+Step Temp E_pair E_mol TotEng Press Volume 
+       0            0            0            0   -10689.519   -15808.949         8000 
+       1            0            0            0   -10689.543   -15751.202    7997.6002 
+Loop time of 5.59141 on 1 procs for 1 steps with 291 atoms
+
+91.5% CPU use with 1 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+     -10689.5194335361  -10689.5194335361  -10689.5433204744
+  Force two-norm initial, final = 238.05240 237.13871
+  Force max component initial, final = 236.81210 235.89988
+  Final line search alpha, max atom move = 4.2227572e-07 9.9614793e-05
+  Iterations, force evaluations = 1 1
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 4.2915e-06 | 4.2915e-06 | 4.2915e-06 |   0.0 |  0.00
+Bond    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 4.7684e-06 | 4.7684e-06 | 4.7684e-06 |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 5.5913     | 5.5913     | 5.5913     |   0.0 |100.00
+Other   |            | 6.008e-05  |            |       |  0.00
+
+Nlocal:        291.000 ave         291 max         291 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:        159.000 ave         159 max         159 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:        298.000 ave         298 max         298 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 298
+Ave neighs/atom = 1.0240550
+Ave special neighs/atom = 0.0000000
+Neighbor list builds = 0
+Dangerous builds = 0

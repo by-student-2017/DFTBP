@@ -1,0 +1,27 @@
+#---------------------------------------------------------------------------------------------------
+If the calculation does not converge even after 100 cycles, 
+the structures of LAMPS and DFTB+ do not match. Even a parallel translation is not enough.
+
+It is a good idea to use the lammps DATA type to output full, 
+then output atomic with a different name, and then convert it to the DFTB+ gen format. 
+It is relatively easy to create.
+#---------------------------------------------------------------------------------------------------
+Ovito -> data.lammps (atom_style full)
+Ovito -> geometry.gen (atom_style atomic) -> geometry.gen
+#---------------------------------------------------------------------------------------------------
+In POSCAR, elements are grouped together, so the order will not match perfectly with the lamps data. 
+If you want to separate the solute and solvent, the gen format is better than POSCAR.
+#---------------------------------------------------------------------------------------------------
+CPU case
+#Solver = MAGMA {}
+Solver = RelativelyRobust {}
+#---------------------------------------------------------------------------------------------------
+GPU case
+Solver = MAGMA {}
+#Solver = RelativelyRobust {}
+#---------------------------------------------------------------------------------------------------
+Appendix. For other systems
+A1. cd packmol
+A2. packmol < mixture.inp
+A3. (you can get mixture.xyz)
+#---------------------------------------------------------------------------------------------------
