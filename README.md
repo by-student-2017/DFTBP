@@ -500,6 +500,7 @@ bash
 
 
 ## Units (DFTB+ and Lammps output) ######################################
+- energy: DFTB+ (results.tag: Ha), Lammps (eV)
 - force : DFTB+ (results.tag: Ha/Bohr), Lammps (eV/Angstrom)
 - stress: DFTB+ (results.tag: au), Lammps (bar = 100 kPa = 0.1 MPa)
   + (dftbplus.h) stress: Pa
